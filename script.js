@@ -6,7 +6,7 @@
 //
 // Written 22/6/2023
 // License: https://github.com/TempeHS/2024SDD-WebJS-Ben.Jones/blob/main/LICENSE
-// this rock paper scissors code was used as a template
+// this rock paper scissors code was used as a template for TicTacToe
 //**********************************************************************************
 
 let playerScore;
