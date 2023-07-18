@@ -26,6 +26,16 @@
 let playerScore;
 let computerScore;
 
+const numbers = document.querySelectorAll('.number')
+const screen = document.getElementById('screen')
+
+numbers.forEach(number => {
+  number.addEventListener('click', function(e) {
+    screen.innerHTML += e.target.innerHTML
+  })
+});
+
+
 function gameLoop (playerClicked) {
 	const randomNumber = generateRandomNumber()
 
@@ -37,8 +47,6 @@ function gameLoop (playerClicked) {
 	if (randomNumber == 1) {
 		randomNumber == "sq1";
 	}
-	
-	document.getElementById("playerScoreContent").innerHTML = playerScore;
 	
 	if (randomNumber == 2) {
 		randomNumber == "sq2";
