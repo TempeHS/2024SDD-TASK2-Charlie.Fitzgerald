@@ -46,37 +46,37 @@ function gameLoop (playerClicked) {
 	// assign outputs to squares 
 	
 	if (randomNumber == 1) {
-		randomNumber == "sq1";
+		randomNumber == document.getElementById(<div class="grid">1</div>).innerHTML = "sq1";
 	}
 	
 	if (randomNumber == 2) {
-		randomNumber == "sq2";
+		randomNumber == document.getElementById(<div class="grid">2</div>).innerHTML = "sq2";
 	}
 	
 	if (randomNumber == 3) {
-		randomNumber == "sq3";
+		randomNumber == document.getElementById(<div class="grid">3</div>).innerHTML = "sq3";
 	}
 	if (randomNumber == 4) {
-		randomNumber == "sq4";
+		randomNumber == document.getElementById(<div class="grid">4</div>).innerHTML = "sq4";
 	}
 	
 	if (randomNumber == 5) {
-		randomNumber == "sq5";
+		randomNumber == document.getElementById(<div class="grid">5</div>).innerHTML = "sq5";
 	}
 	
 	if (randomNumber == 6) {
-		randomNumber == "sq6";
+		randomNumber == document.getElementById(<div class="grid">6</div>).innerHTML = "sq6";
 	}
 	if (randomNumber == 7) {
-		randomNumber == "sq7";
+		randomNumber == document.getElementById(<div class="grid">7</div>).innerHTML = "sq7";
 	}
 	
 	if (randomNumber == 8) {
-		randomNumber == "sq8";
+		randomNumber == document.getElementById(<div class="grid">8</div>).innerHTML = "sq8";
 	}
 	
 	if (randomNumber == 9) {
-		randomNumber == "sq9";
+		randomNumber == document.getElementById(<div class="grid">9</div>).innerHTML = "sq9";
 	}
 
 	const computerChoice = randomNumber //for debug only
@@ -97,8 +97,10 @@ function equalityCheck (playerChoice, computerChoice){
 	
 	let playerTip = 0;
 
-	if (playerChoice == "Rock" && computerChoice == 2) {
-		playerTip = "Paper beats Rock! Computer Wins!"
+	if (playerChoice == )
+
+	if (playerChoice == "sq1" && playerChoice == "sq2" && playerChoice == "sq3") {
+		playerTip = "Crosses Wins!"
 		computerScore = computerScore +1;
 	} else if (playerChoice == "Rock" && computerChoice == 1) {
 		playerTip = "Tie! Go again."
