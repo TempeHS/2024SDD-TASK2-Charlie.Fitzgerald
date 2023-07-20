@@ -97,36 +97,37 @@ function equalityCheck (playerChoice, computerChoice){
 	
 	let playerTip = 0;
 
-	if (playerChoice == )
+	if (playerChoice == "sq1")
+		"sq1" = document.getElementById(<div class="grid">x</div>).innerHTML 
 
-	if (playerChoice == "sq1" && playerChoice == "sq2" && playerChoice == "sq3") {
-		playerTip = "Crosses Wins!"
-		computerScore = computerScore +1;
-	} else if (playerChoice == "Rock" && computerChoice == 1) {
-		playerTip = "Tie! Go again."
-	} else if (playerChoice == "Rock" && computerChoice == 3) {
-		playerTip = "Rock beats Scissors! You Win!"
-		playerScore = playerScore +1;
-	} else if (playerChoice == "Paper" && computerChoice == 1) {
-		playerTip = "Paper beats Rock! You Win!"
-		playerScore = playerScore +1;
-	} else if (playerChoice == "Paper" && computerChoice == 2) {
-		playerTip = "Tie! Go again."
-	} else if (playerChoice == "Paper" && computerChoice == 1) {
-		playerTip = "Paper beats Rock! You Win!"
-		playerScore = playerScore +1;
-	} else if (playerChoice == "Paper" && compuerChoice == 3) {
-		playerTip = "Scissors beats Paper! Computer Wins!"
-		computerScore = computerScore +1;
-	} else if (playerChoice == "Scissors" && computerChoice == 1) {
-		playerTip = "Rock beats Scissors! Computer Wins"
-		computerScore = computerScore +1;
-	} else if (playerChoice == "Scissors" && computerChoice == 2) {
-		playerTip = "Scissors Beats Paper! You Win!"
-		playerScore = playerScore +1;
-	} else if (playerChoice == "Scissors" && computerChoice == 3) {
-		playerTip = "Tie! Go again."
-	}
+		if (playerChoice == "Rock" && computerChoice == 2) {
+			playerTip = "Paper beats Rock! Computer Wins!"
+			computerScore = computerScore +1;
+		} else if (playerChoice == "Rock" && computerChoice == 1) {
+			playerTip = "Tie! Go again."
+		} else if (playerChoice == "Rock" && computerChoice == 3) {
+			playerTip = "Rock beats Scissors! You Win!"
+			playerScore = playerScore +1;
+		} else if (playerChoice == "Paper" && computerChoice == 1) {
+			playerTip = "Paper beats Rock! You Win!"
+			playerScore = playerScore +1;
+		} else if (playerChoice == "Paper" && computerChoice == 2) {
+			playerTip = "Tie! Go again."
+		} else if (playerChoice == "Paper" && computerChoice == 1) {
+			playerTip = "Paper beats Rock! You Win!"
+			playerScore = playerScore +1;
+		} else if (playerChoice == "Paper" && compuerChoice == 3) {
+			playerTip = "Scissors beats Paper! Computer Wins!"
+			computerScore = computerScore +1;
+		} else if (playerChoice == "Scissors" && computerChoice == 1) {
+			playerTip = "Rock beats Scissors! Computer Wins"
+			computerScore = computerScore +1;
+		} else if (playerChoice == "Scissors" && computerChoice == 2) {
+			playerTip = "Scissors Beats Paper! You Win!"
+			playerScore = playerScore +1;
+		} else if (playerChoice == "Scissors" && computerChoice == 3) {
+			playerTip = "Tie! Go again."
+		}
 
 	// alert (playerChoice);  //for debug only
 	// alert (computerChoice); //for debug only
