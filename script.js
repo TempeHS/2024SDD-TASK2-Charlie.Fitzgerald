@@ -39,7 +39,6 @@ numbers.forEach(number => {
 
 function gameLoop (playerClicked) {
 	const randomNumber = generateRandomNumber()
-
 	
 	// utilise the randomnumber output to allow the computer to choose a square
 	// convert random number outputs into a value that can be assigned into a square
