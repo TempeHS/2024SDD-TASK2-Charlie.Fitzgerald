@@ -46,37 +46,39 @@ function gameLoop (playerClicked) {
 	// assign outputs to squares 
 	
 	if (randomNumber == 1) {
-		randomNumber == document.getElementById(<div class="grid">1</div>).innerHTML = "sq1";
+		randomNumber == document.getElementById(<button type="button" value="1" class="button button1">-</button>) = "sq1";
 	}
 	
 	if (randomNumber == 2) {
-		randomNumber == document.getElementById(<div class="grid">2</div>).innerHTML = "sq2";
+		randomNumber == document.getElementById(<button type="button" value="2" class="button button2">-</button>) = "sq2";
 	}
 	
 	if (randomNumber == 3) {
-		randomNumber == document.getElementById(<div class="grid">3</div>).innerHTML = "sq3";
+		randomNumber == document.getElementById(<button type="button" value="3" class="button button3">-</button>) = "sq3";
 	}
+	
 	if (randomNumber == 4) {
-		randomNumber == document.getElementById(<div class="grid">4</div>).innerHTML = "sq4";
+		randomNumber == document.getElementById(<button type="button" value="4" class="button button4">-</button>) = "sq4";
 	}
 	
 	if (randomNumber == 5) {
-		randomNumber == document.getElementById(<div class="grid">5</div>).innerHTML = "sq5";
+		randomNumber == document.getElementById(<button type="button" value="5" class="button button5">-</button>) = "sq5";
 	}
 	
 	if (randomNumber == 6) {
-		randomNumber == document.getElementById(<div class="grid">6</div>).innerHTML = "sq6";
+		randomNumber == document.getElementById(<button type="button" value="6" class="button button6">-</button>) = "sq6";
 	}
+	
 	if (randomNumber == 7) {
-		randomNumber == document.getElementById(<div class="grid">7</div>).innerHTML = "sq7";
+		randomNumber == document.getElementById(<button type="button" value="7" class="button button7">-</button>) = "sq7";
 	}
 	
 	if (randomNumber == 8) {
-		randomNumber == document.getElementById(<div class="grid">8</div>).innerHTML = "sq8";
+		randomNumber == document.getElementById(<button type="button" value="8" class="button button8">-</button>) = "sq8";
 	}
 	
 	if (randomNumber == 9) {
-		randomNumber == document.getElementById(<div class="grid">9</div>).innerHTML = "sq9";
+		randomNumber == document.getElementById(<button type="button" value="9" class="button button9">-</button>) = "sq9";
 	}
 
 	const computerChoice = randomNumber //for debug only
@@ -88,7 +90,6 @@ function generateRandomNumber () {
 	return result;
 }
 
-
 function equalityCheck (playerChoice, computerChoice){
 	// perform an equality check, update scores and output a string using concatenation that gives user feedback 
 
@@ -98,7 +99,7 @@ function equalityCheck (playerChoice, computerChoice){
 	let playerTip = 0;
 
 	if (playerChoice == "sq1")
-		"sq1" = document.getElementById(<div class="grid">x</div>).innerHTML 
+	"sq1" = document.getElementById(<button type="button" value="1" class="button button1">-</button>) 
 
 		if (playerChoice == "Rock" && computerChoice == 2) {
 			playerTip = "Paper beats Rock! Computer Wins!"
