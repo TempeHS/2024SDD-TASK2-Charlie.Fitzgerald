@@ -48,6 +48,38 @@ function gameLoop (playerClicked) {
 		randomNumber == document.getElementById;
 	}
 
+	if (randomNumber == 2) {
+		randomNumber == document.getElementById;
+	}
+
+	if (randomNumber == 3) {
+		randomNumber == document.getElementById;
+	}
+
+	if (randomNumber == 4) {
+		randomNumber == document.getElementById;
+	}
+
+	if (randomNumber == 5) {
+		randomNumber == document.getElementById;
+	}
+
+	if (randomNumber == 6) {
+		randomNumber == document.getElementById;
+	}
+
+	if (randomNumber == 7) {
+		randomNumber == document.getElementById;
+	}
+
+	if (randomNumber == 8) {
+		randomNumber == document.getElementById;
+	}
+
+	if (randomNumber == 9) {
+		randomNumber == document.getElementById;
+	}
+
 	const computerChoice = randomNumber //for debug only
 	equalityCheck (playerClicked, computerChoice);
 }
@@ -58,20 +90,9 @@ function generateRandomNumber () {
 	return result; // tested with alert(result); and gen rand num works when a button is clicked 
 }
 
-let buttons = document.getElementsByClassName("game") // assigns "buttons" to class "game"
-	
-function checkLine(player, number1, number2, number3) {
-	if ($("#" + number1).text() === player && $("#" + number2).text() === player && $("#" + number3).text() === player)
-{
-	if (player === playerTurn) {
-		playerTip = "Winner Winner Chicken Dinner!";
-	}
-}
-
-
 // Logic part of the game
 
-function equalityCheck (playerChoice, computerChoice){
+function equalityCheck (playerChoice, computerChoice) {
 	// perform an equality check, update scores and output a string using concatenation that gives user feedback 
 
 	// create if statements that detect 3 crosses or circles in a row and decide the winner
@@ -79,12 +100,37 @@ function equalityCheck (playerChoice, computerChoice){
 	
 	let playerTip = 0;
 
-	// computer player
-	for (i=0; i < 10; i++)
-		var random = randomNumber()
-	if (buttons[random].innerHTML === "X")
+	// if (playerChoice == 
 	
-	
+		// if (playerChoice == "Rock" && computerChoice == 2) {
+		// 	playerTip = "Paper beats Rock! Computer Wins!"
+		// 	computerScore = computerScore +1;
+		// } else if (playerChoice == "Rock" && computerChoice == 1) {
+		// 	playerTip = "Tie! Go again."
+		// } else if (playerChoice == "Rock" && computerChoice == 3) {
+		// 	playerTip = "Rock beats Scissors! You Win!"
+		// 	playerScore = playerScore +1;
+		// } else if (playerChoice == "Paper" && computerChoice == 1) {
+		// 	playerTip = "Paper beats Rock! You Win!"
+		// 	playerScore = playerScore +1;
+		// } else if (playerChoice == "Paper" && computerChoice == 2) {
+		// 	playerTip = "Tie! Go again."
+		// } else if (playerChoice == "Paper" && computerChoice == 1) {
+		// 	playerTip = "Paper beats Rock! You Win!"
+		// 	playerScore = playerScore +1;
+		// } else if (playerChoice == "Paper" && compuerChoice == 3) {
+		// 	playerTip = "Scissors beats Paper! Computer Wins!"
+		// 	computerScore = computerScore +1;
+		// } else if (playerChoice == "Scissors" && computerChoice == 1) {
+		// 	playerTip = "Rock beats Scissors! Computer Wins"
+		// 	computerScore = computerScore +1;
+		// } else if (playerChoice == "Scissors" && computerChoice == 2) {
+		// 	playerTip = "Scissors Beats Paper! You Win!"
+		// 	playerScore = playerScore +1;
+		// } else if (playerChoice == "Scissors" && computerChoice == 3) {
+		// 	playerTip = "Tie! Go again."
+		// }
+
 
 	// alert (playerChoice);  //for debug only
 	// alert (computerChoice); //for debug only
