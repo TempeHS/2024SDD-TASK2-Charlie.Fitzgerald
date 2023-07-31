@@ -42,7 +42,7 @@ function gameLoop (playerClicked) {
 	
 	// utilise the randomnumber output to allow the computer to choose a square
 	// convert random number outputs into a value that can be assigned into a square
-	// assign outputs to squares 
+	// assign outputs to squares for rng player
 	
 	if (randomNumber == 1) {
 		randomNumber == document.getElementById;
@@ -100,6 +100,19 @@ function equalityCheck (playerChoice, computerChoice) {
 	
 	let playerTip = 0;
 
+	b1 == document.getElementById("b1") // test if java script reacts to HTML button being clicked
+	b2 == document.getElementById("b2")
+	b3 == document.getElementById("b3")
+	b4 == document.getElementById("b4")
+	b5 == document.getElementById("b5")
+	b6 == document.getElementById("b6")
+	b7 == document.getElementById("b7")
+	b8 == document.getElementById("b8")
+	b9 == document.getElementById("b9")
+
+	if (b1.clicked == alert("b1 clicked")) // alert players choice 
+
+		
 	// if (playerChoice == 
 	
 		// if (playerChoice == "Rock" && computerChoice == 2) {
