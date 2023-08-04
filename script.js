@@ -44,41 +44,75 @@ function gameLoop (playerClicked) {
 	// convert random number outputs into a value that can be assigned into a square
 	// assign outputs to squares for rng player
 	
-	if (randomNumber == 1) {
-		randomNumber == document.getElementById;
+	playerTip = playerClicked;
+
+	var b1 = document.getElementById("b1"); // test if java script reacts to HTML button being clicked
+	var b2 = document.getElementById("b2");
+	var b3 = document.getElementById("b3");
+	var b4 = document.getElementById("b4");
+	var b5 = document.getElementById("b5");
+	var b6 = document.getElementById("b6");
+	var b7 = document.getElementById("b7");
+	var b8 = document.getElementById("b8");
+	var b9 = document.getElementById("b9");
+
+	 // alert players choice (works properly now)
+
+	if (b1.clicked) {
+		playerTip = "b1 clicked"
+	} else if (b2.clicked) {
+		playerTip = "b2 clicked"
+	} else if (b3.clicked) {
+		playerTip = "b3 clicked"
+	} else if (b4.clicked) {
+		playerTip = "b4 clicked"
+	} else if (b5.clicked) {
+		playerTip = "b5 clicked"
+	} else if (b6.clicked) {
+		playerTip = "b6 clicked"
+	} else if (b7.clicked) {
+		playerTip = "b7 clicked"
+	} else if (b8.clicked) {
+		playerTip = "b8 clicked"
+	} else if (b9.clicked) {
+		playerTip = "b9 clicked"
+	}
+
+	/*if (randomNumber == 1) {
+		randomNumber == cp1;
 	}
 
 	if (randomNumber == 2) {
-		randomNumber == document.getElementById;
+		randomNumber == cp2;
 	}
-
+	
 	if (randomNumber == 3) {
-		randomNumber == document.getElementById;
+		randomNumber == cp3;
 	}
 
 	if (randomNumber == 4) {
-		randomNumber == document.getElementById;
+		randomNumber == cp4;
 	}
 
 	if (randomNumber == 5) {
-		randomNumber == document.getElementById;
+		randomNumber == cp5;
 	}
 
 	if (randomNumber == 6) {
-		randomNumber == document.getElementById;
+		randomNumber == cp6;
 	}
 
 	if (randomNumber == 7) {
-		randomNumber == document.getElementById;
+		randomNumber == cp7;
 	}
 
 	if (randomNumber == 8) {
-		randomNumber == document.getElementById;
+		randomNumber == cp8;
 	}
 
 	if (randomNumber == 9) {
-		randomNumber == document.getElementById;
-	}
+		document.getElementById()
+	}*/
 
 	const computerChoice = randomNumber //for debug only
 	equalityCheck (playerClicked, computerChoice);
@@ -98,26 +132,10 @@ function equalityCheck (playerChoice, computerChoice) {
 	// create if statements that detect 3 crosses or circles in a row and decide the winner
 	// create logic that plots the circles by the computer (player will be crosses and computer will be circles)
 	
-	let playerTip = 0;
+	//let playerTip = 0; only for testing at the moment
 
-	b1 == document.getElementById("b1") // test if java script reacts to HTML button being clicked
-	b2 == document.getElementById("b2")
-	b3 == document.getElementById("b3")
-	b4 == document.getElementById("b4")
-	b5 == document.getElementById("b5")
-	b6 == document.getElementById("b6")
-	b7 == document.getElementById("b7")
-	b8 == document.getElementById("b8")
-	b9 == document.getElementById("b9")
+	
 
-	 // alert players choice 
-
-	if (b1.clicked == alert("b1 clicked")) {
-	}
-
-	if (b2.clicked == alert("b2 clicked")) {
-	}
-		
 	// if (playerChoice == 
 	
 		// if (playerChoice == "Rock" && computerChoice == 2) {
