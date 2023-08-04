@@ -110,8 +110,13 @@ function equalityCheck (playerChoice, computerChoice) {
 	b8 == document.getElementById("b8")
 	b9 == document.getElementById("b9")
 
-	if (b1.clicked == alert("b1 clicked")) // alert players choice 
+	 // alert players choice 
 
+	if (b1.clicked == alert("b1 clicked")) {
+	}
+
+	if (b2.clicked == alert("b2 clicked")) {
+	}
 		
 	// if (playerChoice == 
 	
