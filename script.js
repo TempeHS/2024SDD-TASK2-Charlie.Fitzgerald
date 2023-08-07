@@ -78,41 +78,97 @@ function gameLoop (playerClicked) {
 		playerTip = "b9 clicked"
 	}
 
-	/*if (randomNumber == 1) {
-		randomNumber == cp1;
+	document.getElementById("b1").addEventListener("click", function(){ 
+		document.getElementById("b1").innerHTML = "X";
+	});
+
+	document.getElementById("b2").addEventListener("click", function(){ 
+		document.getElementById("b2").innerHTML = "X";
+	});
+
+	document.getElementById("b3").addEventListener("click", function(){ 
+		document.getElementById("b3").innerHTML = "X";
+	});
+
+	document.getElementById("b4").addEventListener("click", function(){ 
+		document.getElementById("b4").innerHTML = "X";
+	});
+
+	document.getElementById("b5").addEventListener("click", function(){ 
+		document.getElementById("b5").innerHTML = "X";
+	});
+
+	document.getElementById("b6").addEventListener("click", function(){ 
+		document.getElementById("b6").innerHTML = "X";
+	});
+
+	document.getElementById("b7").addEventListener("click", function(){ 
+		document.getElementById("b7").innerHTML = "X";
+	});
+
+	document.getElementById("b8").addEventListener("click", function(){ 
+		document.getElementById("b8").innerHTML = "X";
+	});
+
+	document.getElementById("b9").addEventListener("click", function(){ 
+		document.getElementById("b9").innerHTML = "X";
+	});
+
+	// AI portion of the javascript
+
+	if (randomNumber == 1) {
+		document.getElementById("b1").addEventListener("click", function(){ 
+			document.getElementById("b1").innerHTML = "O";
+		 });
 	}
 
 	if (randomNumber == 2) {
-		randomNumber == cp2;
+		document.getElementById("b2").addEventListener("click", function(){ 
+			document.getElementById("b2").innerHTML = "O";
+		 });
 	}
 	
 	if (randomNumber == 3) {
-		randomNumber == cp3;
+		document.getElementById("b3").addEventListener("click", function(){ 
+			document.getElementById("b3").innerHTML = "O";
+		 });
 	}
 
 	if (randomNumber == 4) {
-		randomNumber == cp4;
+		document.getElementById("b4").addEventListener("click", function(){ 
+			document.getElementById("b4").innerHTML = "O";
+		 });
 	}
 
 	if (randomNumber == 5) {
-		randomNumber == cp5;
+		document.getElementById("b5").addEventListener("click", function(){ 
+			document.getElementById("b5").innerHTML = "O";
+		 });
 	}
 
 	if (randomNumber == 6) {
-		randomNumber == cp6;
+		document.getElementById("b6").addEventListener("click", function(){ 
+			document.getElementById("b6").innerHTML = "O";
+		 });
 	}
 
 	if (randomNumber == 7) {
-		randomNumber == cp7;
+		document.getElementById("b7").addEventListener("click", function(){ 
+			document.getElementById("b7").innerHTML = "O";
+		 });
 	}
 
 	if (randomNumber == 8) {
-		randomNumber == cp8;
+		document.getElementById("b8").addEventListener("click", function(){ 
+			document.getElementById("b8").innerHTML = "O";
+		 });
 	}
 
 	if (randomNumber == 9) {
-		document.getElementById()
-	}*/
+		document.getElementById("b9").addEventListener("click", function(){ 
+			document.getElementById("b9").innerHTML = "O";
+		 });
+	}
 
 	const computerChoice = randomNumber //for debug only
 	equalityCheck (playerClicked, computerChoice);
