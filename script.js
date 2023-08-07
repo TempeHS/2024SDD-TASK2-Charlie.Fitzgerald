@@ -44,7 +44,7 @@ function gameLoop (playerClicked) {
 	// convert random number outputs into a value that can be assigned into a square
 	// assign outputs to squares for rng player
 	
-	playerTip = playerClicked;
+	playerTip = "You chose " + playerClicked;
 
 	var b1 = document.getElementById("b1"); // test if java script reacts to HTML button being clicked
 	var b2 = document.getElementById("b2");
@@ -172,17 +172,17 @@ function gameLoop (playerClicked) {
 
 	// Clears board (not working as of right now)
 
-	/*var document.getElementById("clearButton") = clearButton {
+	/*var document.getElementById("cb") = clearButton {
 		clearButton.clicked {
 		b1 = document.getElementById("b1").innerHTML = ""
-		b2 = document.getElementById("b1").innerHTML = "";
-		b3 = document.getElementById("b1").innerHTML = "";
-		b4 = document.getElementById("b1").innerHTML = "";
-		b5 = document.getElementById("b1").innerHTML = "";
-		b6 = document.getElementById("b1").innerHTML = "";
-		b7 = document.getElementById("b1").innerHTML = "";
-		b8 = document.getElementById("b1").innerHTML = "";
-		b9 = document.getElementById("b1").innerHTML = "";
+		b2 = document.getElementById("b2").innerHTML = "";
+		b3 = document.getElementById("b3").innerHTML = "";
+		b4 = document.getElementById("b4").innerHTML = "";
+		b5 = document.getElementById("b5").innerHTML = "";
+		b6 = document.getElementById("b6").innerHTML = "";
+		b7 = document.getElementById("b7").innerHTML = "";
+		b8 = document.getElementById("b8").innerHTML = "";
+		b9 = document.getElementById("b9").innerHTML = "";
 		}
 	}*/
 
@@ -193,7 +193,8 @@ function gameLoop (playerClicked) {
 // generates random number 
 function generateRandomNumber () {
 	const result = Math.floor((Math.random() * 9) + 1);
-	return result; // tested with alert(result); and gen rand num works when a button is clicked 
+	//return result; // tested with alert(result); and gen rand num works when a button is clicked
+	rngOutput = "randomNumberOutput = " + result; 
 }
 
 // Logic part of the game
@@ -246,4 +247,5 @@ function equalityCheck (playerChoice, computerChoice) {
 	document.getElementById("playerScoreContent").innerHTML = playerScore;
 	document.getElementById("computerScoreContent").innerHTML = computerScore;
 	document.getElementById("tipContent").innerHTML = playerTip;
+	document.getElementById("rngOutput").innerHTML = rngOutput;
 }
