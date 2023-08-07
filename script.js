@@ -170,6 +170,22 @@ function gameLoop (playerClicked) {
 		 });
 	}
 
+	// Clears board (not working as of right now)
+
+	/*var document.getElementById("clearButton") = clearButton {
+		clearButton.clicked {
+		b1 = document.getElementById("b1").innerHTML = ""
+		b2 = document.getElementById("b1").innerHTML = "";
+		b3 = document.getElementById("b1").innerHTML = "";
+		b4 = document.getElementById("b1").innerHTML = "";
+		b5 = document.getElementById("b1").innerHTML = "";
+		b6 = document.getElementById("b1").innerHTML = "";
+		b7 = document.getElementById("b1").innerHTML = "";
+		b8 = document.getElementById("b1").innerHTML = "";
+		b9 = document.getElementById("b1").innerHTML = "";
+		}
+	}*/
+
 	const computerChoice = randomNumber //for debug only
 	equalityCheck (playerClicked, computerChoice);
 }
