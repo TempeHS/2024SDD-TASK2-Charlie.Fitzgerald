@@ -65,7 +65,7 @@
 }
  .tictactoe-buttons {
      display: grid;
-     grid-template-columns: repeat(4, 1fr);
+     grid-template-columns: repeat(2, 1fr);
      grid-gap: 20px;
      padding: 20px;
 }
@@ -77,8 +77,10 @@
 	<h4>Computer score: <span id="computerScoreContent">0</span></h4>
 	<h3 id="tipContent">Click a square to play!</h3>
 	<h3 id="rngOutput">Output</h3>
+	<h3 id="turnCount">0</h3>
 	<div class="tictactoe-buttons">
-		<button id="cb">reset</button>
+		<button id="resetButton">reset</button>
+		<button id="startButton" onclick="gameLoop('startButton');">start</button>
 	</div>
 	</div>
 	<!-- <div class="container text-center">
