@@ -28,6 +28,7 @@ let playerScore = 0;
 let computerScore = 0;
 //let turnCount = 0;
 
+
 const numbers = document.querySelectorAll('.number')
 const screen = document.getElementById('screen')
 
@@ -50,15 +51,15 @@ function gameLoop (playerClicked) {
 
 	playerTip = "You chose " + playerClicked;
 
-	var b1 = document.getElementById("b1"); // test if java script reacts to HTML button being clicked
-	var b2 = document.getElementById("b2");
-	var b3 = document.getElementById("b3");
-	var b4 = document.getElementById("b4");
-	var b5 = document.getElementById("b5");
-	var b6 = document.getElementById("b6");
-	var b7 = document.getElementById("b7");
-	var b8 = document.getElementById("b8");
-	var b9 = document.getElementById("b9");
+	let b1 = document.getElementById("b1"); // test if java script reacts to HTML button being clicked
+	let b2 = document.getElementById("b2");
+	let b3 = document.getElementById("b3");
+	let b4 = document.getElementById("b4");
+	let b5 = document.getElementById("b5");
+	let b6 = document.getElementById("b6");
+	let b7 = document.getElementById("b7");
+	let b8 = document.getElementById("b8");
+	let b9 = document.getElementById("b9");
 
 	// adds a point to turn counter when a player or computer takes a turn (not working)
 	
@@ -180,7 +181,6 @@ function gameLoop (playerClicked) {
 function generateRandomNumber () {
 	const result = Math.floor((Math.random() * 9) + 1);
 	return result; // tested with alert(result); and gen rand num works when a button is clicked
-	//rngOutput = "randomNumberOutput = " + result;
 }
 
 // Logic part of the game
@@ -191,10 +191,10 @@ function equalityCheck (playerChoice, computerChoice) {
 	// create if statements that detect 3 crosses or circles in a row and decide the winner
 	// create logic that plots the circles by the computer (player will be crosses and computer will be circles)
 	
-	//let playerTip = 0; only for testing at the moment
+	//let playerTip = 0; // only for testing at the moment
 
 	// Line checker, still testing, currently tells you if theres a line pattern
-	
+
 	if (document.getElementById("b1").innerHTML == "X" && document.getElementById("b2").innerHTML == "X" && document.getElementById("b3").innerHTML == "X") {
 		b1 = document.getElementById("b1").innerHTML = "";
 		b2 = document.getElementById("b2").innerHTML = "";
@@ -267,14 +267,16 @@ function equalityCheck (playerChoice, computerChoice) {
 
 	// AI doesnt choose box if player has already chosen the box ID matching the rng output
 
-	if (document.getElementById("b1").innerHTML == "X" && result == 1) {
-		alert("computer and player chose square 1")
+	if (generateRandomNumber() == 1 && document.getElementById("b1").innerHTML == "X") {
+		result = result +1;
+		// make random number generator run again if rng output is equal to player choice value
 	}
 
 	// prevent player from clicking same square twice
 
-	if (b1.clicked && document.getElementByClass("grid-holder").innerHTML == "X") {
-		alert("choose again")
+	if (document.getElementById("b1").innerHTML == "X" && generateRandomNumber() == 1) {
+		alert("choose another square")
+		// stop random number generator from generating number until player clicks another empty button
 	}
 
 	// resets board when turnCount = 9 to reset board automatically on a tie
@@ -298,6 +300,6 @@ function equalityCheck (playerChoice, computerChoice) {
 	document.getElementById("playerScoreContent").innerHTML = playerScore;
 	document.getElementById("computerScoreContent").innerHTML = computerScore;
 	document.getElementById("tipContent").innerHTML = playerTip;
-	document.getElementById("rngOutput").innerHTML = rngOutput;
+	//document.getElementById("rngOutput").innerHTML = rngOutput;
 	//document.getElementById("turnCount").innerHTML = turnCount;
 }
