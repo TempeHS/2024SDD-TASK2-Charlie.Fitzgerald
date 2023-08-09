@@ -26,7 +26,7 @@
 
 let playerScore = 0;
 let computerScore = 0;
-let turnCount = 0;
+//let turnCount = 0;
 
 const numbers = document.querySelectorAll('.number')
 const screen = document.getElementById('screen')
@@ -60,9 +60,9 @@ function gameLoop (playerClicked) {
 	var b8 = document.getElementById("b8");
 	var b9 = document.getElementById("b9");
 
-	// alert players choice (works properly now)
+	// adds a point to turn counter when a player or computer takes a turn (not working)
 	
-	if (b1.clicked) {
+	/*if (b1.clicked) {
 		turnCount = turnCount +1;
 		} else if (b2.clicked) {
 		turnCount = turnCount +1;
@@ -80,7 +80,7 @@ function gameLoop (playerClicked) {
 		turnCount = turnCount +1;
 		} else if (b9.clicked) {
 		turnCount = turnCount +1;
-	}
+	}*/
 
 	// change square to X when player clicks a square
 
@@ -123,46 +123,41 @@ function gameLoop (playerClicked) {
 	// AI portion of the javascript code; change square to O accordingly with the RNG output
 
 	if (randomNumber == 1) { 
-			document.getElementById("b1").innerHTML = "O";
+		document.getElementById("b1").innerHTML = "O";
 	}
 
 	if (randomNumber == 2) { 
-			document.getElementById("b2").innerHTML = "O";
+		document.getElementById("b2").innerHTML = "O";
 	}
 	
 	if (randomNumber == 3) { 
-			document.getElementById("b3").innerHTML = "O";
+		document.getElementById("b3").innerHTML = "O";
 	}
 
 	if (randomNumber == 4) {
-			document.getElementById("b4").innerHTML = "O";
+		document.getElementById("b4").innerHTML = "O";
 	}
 
 	if (randomNumber == 5) {
-			document.getElementById("b5").innerHTML = "O";
-
+		document.getElementById("b5").innerHTML = "O";
 	}
 
 	if (randomNumber == 6) {
-			document.getElementById("b6").innerHTML = "O";
-
+		document.getElementById("b6").innerHTML = "O";
 	}
 
 	if (randomNumber == 7) {
-			document.getElementById("b7").innerHTML = "O";
-
+		document.getElementById("b7").innerHTML = "O";
 	}
 
 	if (randomNumber == 8) {
-			document.getElementById("b8").innerHTML = "O";
-
+		document.getElementById("b8").innerHTML = "O";
 	}
 
 	if (randomNumber == 9) {
-			document.getElementById("b9").innerHTML = "O";
-
+		document.getElementById("b9").innerHTML = "O";
 	}
-	
+
 	// Clears board (working properly now)
 	document.getElementById("resetButton").addEventListener("click", function() {
 		b1 = document.getElementById("b1").innerHTML = "";
@@ -174,8 +169,7 @@ function gameLoop (playerClicked) {
 		b7 = document.getElementById("b7").innerHTML = "";
 		b8 = document.getElementById("b8").innerHTML = "";
 		b9 = document.getElementById("b9").innerHTML = "";
-		turnCount = 0;
-		
+		//turnCount = 0;
 	});	
 
 	const computerChoice = randomNumber //for debug only
@@ -185,8 +179,8 @@ function gameLoop (playerClicked) {
 // generates random number 
 function generateRandomNumber () {
 	const result = Math.floor((Math.random() * 9) + 1);
-	//return result; // tested with alert(result); and gen rand num works when a button is clicked
-	rngOutput = "randomNumberOutput = " + result;
+	return result; // tested with alert(result); and gen rand num works when a button is clicked
+	//rngOutput = "randomNumberOutput = " + result;
 }
 
 // Logic part of the game
@@ -211,7 +205,7 @@ function equalityCheck (playerChoice, computerChoice) {
 		b7 = document.getElementById("b7").innerHTML = "";
 		b8 = document.getElementById("b8").innerHTML = "";
 		b9 = document.getElementById("b9").innerHTML = "";
-		turnCount = 0;
+		//turnCount = 0;
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 	} 
@@ -225,7 +219,7 @@ function equalityCheck (playerChoice, computerChoice) {
 		b7 = document.getElementById("b7").innerHTML = "";
 		b8 = document.getElementById("b8").innerHTML = "";
 		b9 = document.getElementById("b9").innerHTML = "";
-		turnCount = 0;
+		//turnCount = 0;
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 	} 
@@ -239,7 +233,7 @@ function equalityCheck (playerChoice, computerChoice) {
 		b7 = document.getElementById("b7").innerHTML = "";
 		b8 = document.getElementById("b8").innerHTML = "";
 		b9 = document.getElementById("b9").innerHTML = "";
-		turnCount = 0;
+		//turnCount = 0;
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 	}
@@ -253,7 +247,7 @@ function equalityCheck (playerChoice, computerChoice) {
 		b7 = document.getElementById("b7").innerHTML = "";
 		b8 = document.getElementById("b8").innerHTML = "";
 		b9 = document.getElementById("b9").innerHTML = "";
-		turnCount = 0;
+		//turnCount = 0;
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 	} else if (document.getElementById("b4").innerHTML == "O" && document.getElementById("b5").innerHTML == "O" && document.getElementById("b6").innerHTML == "O") {
@@ -266,14 +260,14 @@ function equalityCheck (playerChoice, computerChoice) {
 		b7 = document.getElementById("b7").innerHTML = "";
 		b8 = document.getElementById("b8").innerHTML = "";
 		b9 = document.getElementById("b9").innerHTML = "";
-		turnCount = 0;
+		//turnCount = 0;
 		computerScore = computerScore +1;
 		playerTip = "Player won!";
 	}
 
 	// AI doesnt choose box if player has already chosen the box ID matching the rng output
 
-	if (document.getElementById("b1").innerHTML == "X" && document.getElementById("b1") == "0") {
+	if (document.getElementById("b1").innerHTML == "X" && result == 1) {
 		alert("computer and player chose square 1")
 	}
 
@@ -285,7 +279,7 @@ function equalityCheck (playerChoice, computerChoice) {
 
 	// resets board when turnCount = 9 to reset board automatically on a tie
 
-	if (turnCount == 9) {
+	/*if (turnCount == 9) {
 		b1 = document.getElementById("b1").innerHTML = "";
 		b2 = document.getElementById("b2").innerHTML = "";
 		b3 = document.getElementById("b3").innerHTML = "";
@@ -296,39 +290,7 @@ function equalityCheck (playerChoice, computerChoice) {
 		b8 = document.getElementById("b8").innerHTML = "";
 		b9 = document.getElementById("b9").innerHTML = "";
 		turnCount = 0;
-	}
-
-	// if (playerChoice == 
-	
-		// if (playerChoice == "Rock" && computerChoice == 2) {
-		// 	playerTip = "Paper beats Rock! Computer Wins!"
-		// 	computerScore = computerScore +1;
-		// } else if (playerChoice == "Rock" && computerChoice == 1) {
-		// 	playerTip = "Tie! Go again."
-		// } else if (playerChoice == "Rock" && computerChoice == 3) {
-		// 	playerTip = "Rock beats Scissors! You Win!"
-		// 	playerScore = playerScore +1;
-		// } else if (playerChoice == "Paper" && computerChoice == 1) {
-		// 	playerTip = "Paper beats Rock! You Win!"
-		// 	playerScore = playerScore +1;
-		// } else if (playerChoice == "Paper" && computerChoice == 2) {
-		// 	playerTip = "Tie! Go again."
-		// } else if (playerChoice == "Paper" && computerChoice == 1) {
-		// 	playerTip = "Paper beats Rock! You Win!"
-		// 	playerScore = playerScore +1;
-		// } else if (playerChoice == "Paper" && compuerChoice == 3) {
-		// 	playerTip = "Scissors beats Paper! Computer Wins!"
-		// 	computerScore = computerScore +1;
-		// } else if (playerChoice == "Scissors" && computerChoice == 1) {
-		// 	playerTip = "Rock beats Scissors! Computer Wins"
-		// 	computerScore = computerScore +1;
-		// } else if (playerChoice == "Scissors" && computerChoice == 2) {
-		// 	playerTip = "Scissors Beats Paper! You Win!"
-		// 	playerScore = playerScore +1;
-		// } else if (playerChoice == "Scissors" && computerChoice == 3) {
-		// 	playerTip = "Tie! Go again."
-		// }
-
+	}*/
 
 	// alert (playerChoice);  //for debug only
 	// alert (computerChoice); //for debug only
@@ -337,5 +299,5 @@ function equalityCheck (playerChoice, computerChoice) {
 	document.getElementById("computerScoreContent").innerHTML = computerScore;
 	document.getElementById("tipContent").innerHTML = playerTip;
 	document.getElementById("rngOutput").innerHTML = rngOutput;
-	document.getElementById("turnCount").innerHTML = turnCount;
+	//document.getElementById("turnCount").innerHTML = turnCount;
 }
