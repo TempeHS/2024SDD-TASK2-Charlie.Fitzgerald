@@ -1,32 +1,32 @@
-//**********************************************************************************
-// written by Ben Jones															   *
-//																				   *
-// edited by:																	   *
-// ▄████▄   ██░ ██  ▄▄▄       ██▀███   ██▓     ██▓▓█████ 						   *
-// ▒██▀ ▀█  ▓██░ ██▒▒████▄    ▓██ ▒ ██▒▓██▒    ▓██▒▓█   ▀						   * 
-// ▒▓█    ▄ ▒██▀▀██░▒██  ▀█▄  ▓██ ░▄█ ▒▒██░    ▒██▒▒███  						   * 
-// ▒▓▓▄ ▄██▒░▓█ ░██ ░██▄▄▄▄██ ▒██▀▀█▄  ▒██░    ░██░▒▓█  ▄						   * 
-// ▒ ▓███▀ ░░▓█▒░██▓ ▓█   ▓██▒░██▓ ▒██▒░██████▒░██░░▒████▒						   *
-// ░ ░▒ ▒  ░ ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░▓  ░░▓  ░░ ▒░ ░						   *	
-//   ░  ▒    ▒ ░▒░ ░  ▒   ▒▒ ░  ░▒ ░ ▒░░ ░ ▒  ░ ▒ ░ ░ ░  ░						   *
-// ░         ░  ░░ ░  ░   ▒     ░░   ░   ░ ░    ▒ ░   ░   						   *
-// ░ ░       ░  ░  ░      ░  ░   ░         ░  ░ ░     ░  ░						   *
-// ░                                                      						   *
-// Student boilerplate to make a OOP Rock Paper Scissors						   *
-// - OOP - Const data type - Passing data into methods							   *
-//																				   *
-// Written 22/6/2023															   *
-// License: https://github.com/TempeHS/2024SDD-WebJS-Ben.Jones/blob/main/LICENSE   *
-// this rock paper scissors code was used as a template							   *
-// 																				   *	
-// main plan with this code is to turn this boiler plate from a rock paper scissors*
-// into a tic tac toe based off of the random number generator					   *
-//**********************************************************************************
+//*********************************************************************************
+// written by Ben Jones															   
+//																				   
+// edited by:																	   
+// ▄████▄   ██░ ██  ▄▄▄       ██▀███   ██▓     ██▓▓█████ 						   
+// ▒██▀ ▀█  ▓██░ ██▒▒████▄    ▓██ ▒ ██▒▓██▒    ▓██▒▓█   ▀						    
+// ▒▓█    ▄ ▒██▀▀██░▒██  ▀█▄  ▓██ ░▄█ ▒▒██░    ▒██▒▒███  						    
+// ▒▓▓▄ ▄██▒░▓█ ░██ ░██▄▄▄▄██ ▒██▀▀█▄  ▒██░    ░██░▒▓█  ▄						    
+// ▒ ▓███▀ ░░▓█▒░██▓ ▓█   ▓██▒░██▓ ▒██▒░██████▒░██░░▒████▒						   
+// ░ ░▒ ▒  ░ ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░▓  ░░▓  ░░ ▒░ ░						   	
+//   ░  ▒    ▒ ░▒░ ░  ▒   ▒▒ ░  ░▒ ░ ▒░░ ░ ▒  ░ ▒ ░ ░ ░  ░						   
+// ░         ░  ░░ ░  ░   ▒     ░░   ░   ░ ░    ▒ ░   ░   						   
+// ░ ░       ░  ░  ░      ░  ░   ░         ░  ░ ░     ░  ░						   
+// ░                                                      						   
+// Student boilerplate to make a OOP Rock Paper Scissors						   
+// - OOP - Const data type - Passing data into methods							   
+//																				   
+// Written 22/6/2023															   
+// License: https://github.com/TempeHS/2024SDD-WebJS-Ben.Jones/blob/main/LICENSE   
+// this rock paper scissors code was used as a template							   
+// 																				   	
+// main plan with this code is to turn this boiler plate from a rock paper scissors
+// into a tic tac toe based off of the random number generator					   
+//*********************************************************************************
 
 
 let playerScore = 0;
 let computerScore = 0;
-//let turnCount = 0;
+let turnCount = 0;
 
 
 const numbers = document.querySelectorAll('.number')
@@ -43,6 +43,8 @@ function gameLoop (playerClicked) {
 	
 	document.getElementById("startButton").addEventListener("click", function() {
 		playerTip = "Game Started";
+		gameReset();
+		turnCount = turnCount -1;
 	});
 
 	// utilise the randomnumber output to allow the computer to choose a square
@@ -83,6 +85,10 @@ function gameLoop (playerClicked) {
 		turnCount = turnCount +1;
 	}*/
 
+	if (playerClicked) {
+		turnCount = turnCount +1;
+	}
+	
 	// change square to X when player clicks a square
 
 	document.getElementById("b1").addEventListener("click", function(){ 
@@ -161,16 +167,7 @@ function gameLoop (playerClicked) {
 
 	// Clears board (working properly now)
 	document.getElementById("resetButton").addEventListener("click", function() {
-		b1 = document.getElementById("b1").innerHTML = "";
-		b2 = document.getElementById("b2").innerHTML = "";
-		b3 = document.getElementById("b3").innerHTML = "";
-		b4 = document.getElementById("b4").innerHTML = "";
-		b5 = document.getElementById("b5").innerHTML = "";
-		b6 = document.getElementById("b6").innerHTML = "";
-		b7 = document.getElementById("b7").innerHTML = "";
-		b8 = document.getElementById("b8").innerHTML = "";
-		b9 = document.getElementById("b9").innerHTML = "";
-		//turnCount = 0;
+		gameReset();
 	});	
 
 	const computerChoice = randomNumber //for debug only
@@ -181,6 +178,19 @@ function gameLoop (playerClicked) {
 function generateRandomNumber () {
 	const result = Math.floor((Math.random() * 9) + 1);
 	return result; // tested with alert(result); and gen rand num works when a button is clicked
+}
+
+function gameReset () {
+	b1 = document.getElementById("b1").innerHTML = "";
+	b2 = document.getElementById("b2").innerHTML = "";
+	b3 = document.getElementById("b3").innerHTML = "";
+	b4 = document.getElementById("b4").innerHTML = "";
+	b5 = document.getElementById("b5").innerHTML = "";
+	b6 = document.getElementById("b6").innerHTML = "";
+	b7 = document.getElementById("b7").innerHTML = "";
+	b8 = document.getElementById("b8").innerHTML = "";
+	b9 = document.getElementById("b9").innerHTML = "";
+	turnCount = 0;
 }
 
 // Logic part of the game
@@ -195,104 +205,102 @@ function equalityCheck (playerChoice, computerChoice) {
 
 	// Line checker, still testing, currently tells you if theres a line pattern
 
+	// straight line (left to right), 1,2,3 or 4,5,6 or 7,8,9
 	if (document.getElementById("b1").innerHTML == "X" && document.getElementById("b2").innerHTML == "X" && document.getElementById("b3").innerHTML == "X") {
-		b1 = document.getElementById("b1").innerHTML = "";
-		b2 = document.getElementById("b2").innerHTML = "";
-		b3 = document.getElementById("b3").innerHTML = "";
-		b4 = document.getElementById("b4").innerHTML = "";
-		b5 = document.getElementById("b5").innerHTML = "";
-		b6 = document.getElementById("b6").innerHTML = "";
-		b7 = document.getElementById("b7").innerHTML = "";
-		b8 = document.getElementById("b8").innerHTML = "";
-		b9 = document.getElementById("b9").innerHTML = "";
-		//turnCount = 0;
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
-	} 
-	if (document.getElementById("b1").innerHTML == "X" && document.getElementById("b4").innerHTML == "X" && document.getElementById("b7").innerHTML == "X") {
-		b1 = document.getElementById("b1").innerHTML = "";
-		b2 = document.getElementById("b2").innerHTML = "";
-		b3 = document.getElementById("b3").innerHTML = "";
-		b4 = document.getElementById("b4").innerHTML = "";
-		b5 = document.getElementById("b5").innerHTML = "";
-		b6 = document.getElementById("b6").innerHTML = "";
-		b7 = document.getElementById("b7").innerHTML = "";
-		b8 = document.getElementById("b8").innerHTML = "";
-		b9 = document.getElementById("b9").innerHTML = "";
-		//turnCount = 0;
-		playerScore = playerScore +1;
-		playerTip = "Player won!";
-	} 
-	if (document.getElementById("b1").innerHTML == "X" && document.getElementById("b5").innerHTML == "X" && document.getElementById("b9").innerHTML =="X") {
-		b1 = document.getElementById("b1").innerHTML = "";
-		b2 = document.getElementById("b2").innerHTML = "";
-		b3 = document.getElementById("b3").innerHTML = "";
-		b4 = document.getElementById("b4").innerHTML = "";
-		b5 = document.getElementById("b5").innerHTML = "";
-		b6 = document.getElementById("b6").innerHTML = "";
-		b7 = document.getElementById("b7").innerHTML = "";
-		b8 = document.getElementById("b8").innerHTML = "";
-		b9 = document.getElementById("b9").innerHTML = "";
-		//turnCount = 0;
-		playerScore = playerScore +1;
-		playerTip = "Player won!";
+		gameReset();
+	} else if (document.getElementById("b1").innerHTML == "0" && document.getElementById("b2").innerHTML == "O" && document.getElementById("b3").innerHTML == "X") {
+		computerScore = computerScore +1;
+		playerTip = "Computer Won!";
+		gameReset();
 	}
 	if (document.getElementById("b4").innerHTML == "X" && document.getElementById("b5").innerHTML == "X" && document.getElementById("b6").innerHTML == "X") {
-		b1 = document.getElementById("b1").innerHTML = "";
-		b2 = document.getElementById("b2").innerHTML = "";
-		b3 = document.getElementById("b3").innerHTML = "";
-		b4 = document.getElementById("b4").innerHTML = "";
-		b5 = document.getElementById("b5").innerHTML = "";
-		b6 = document.getElementById("b6").innerHTML = "";
-		b7 = document.getElementById("b7").innerHTML = "";
-		b8 = document.getElementById("b8").innerHTML = "";
-		b9 = document.getElementById("b9").innerHTML = "";
-		//turnCount = 0;
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
+		gameReset();
 	} else if (document.getElementById("b4").innerHTML == "O" && document.getElementById("b5").innerHTML == "O" && document.getElementById("b6").innerHTML == "O") {
-		b1 = document.getElementById("b1").innerHTML = "";
-		b2 = document.getElementById("b2").innerHTML = "";
-		b3 = document.getElementById("b3").innerHTML = "";
-		b4 = document.getElementById("b4").innerHTML = "";
-		b5 = document.getElementById("b5").innerHTML = "";
-		b6 = document.getElementById("b6").innerHTML = "";
-		b7 = document.getElementById("b7").innerHTML = "";
-		b8 = document.getElementById("b8").innerHTML = "";
-		b9 = document.getElementById("b9").innerHTML = "";
-		//turnCount = 0;
 		computerScore = computerScore +1;
-		playerTip = "Player won!";
+		playerTip = "Computer won!";
+		gameReset();
 	}
+	if (document.getElementById("b7").innerHTML == "X" && document.getElementById("b8").innerHTML == "X" && document.getElementById("b9").innerHTML == "X") {
+		playerScore = playerScore +1;
+		playerTip = "Player won!";
+		gameReset();
+	} else if (document.getElementById("b7").innerHTML == "O" && document.getElementById("b8").innerHTML == "O" && document.getElementById("b9").innerHTML == "O") {
+		computerScore = computerScore +1;
+		playerTip = "Computer won!";
+		gameReset();
+	}
+	// straight line win (downwards), 1,4,7 or 2,5,8 or 3,6,9
+	if (document.getElementById("b1").innerHTML == "X" && document.getElementById("b4").innerHTML == "X" && document.getElementById("b7").innerHTML == "X") {
+		playerScore = playerScore +1;
+		playerTip = "Player won!";
+		gameReset();
+	} else if (document.getElementById("b1").innerHTML == "O" && document.getElementById("b4").innerHTML == "O" && document.getElementById("b7").innerHTML == "O") {
+		playerScore = playerScore +1;
+		playerTip = "Computer won!";
+		gameReset();
+	}
+	if (document.getElementById("b2").innerHTML == "X" && document.getElementById("b5").innerHTML == "X" && document.getElementById("b8").innerHTML == "X") {
+		playerScore = playerScore +1;
+		playerTip = "Player won!";
+		gameReset();
+	} else if (document.getElementById("b2").innerHTML == "O" && document.getElementById("b5").innerHTML == "O" && document.getElementById("b8").innerHTML == "O") {
+		playerScore = playerScore +1;
+		playerTip = "Computer won!";
+		gameReset();
+	}
+	if (document.getElementById("b3").innerHTML == "X" && document.getElementById("b6").innerHTML == "X" && document.getElementById("b9").innerHTML == "X") {
+		playerScore = playerScore +1;
+		playerTip = "Player won!";
+		gameReset();
+	} else if (document.getElementById("b3").innerHTML == "O" && document.getElementById("b6").innerHTML == "O" && document.getElementById("b9").innerHTML == "O") {
+		playerScore = playerScore +1;
+		playerTip = "Computer won!";
+		gameReset();
+	}	
+	// diagonal line win, 1,5,9 or 3,5,7
+	if (document.getElementById("b1").innerHTML == "X" && document.getElementById("b5").innerHTML == "X" && document.getElementById("b9").innerHTML =="X") {
+		playerScore = playerScore +1;
+		playerTip = "Player won!";
+		gameReset();
+	} else if (document.getElementById("b1").innerHTML == "O" && document.getElementById("b5").innerHTML == "O" && document.getElementById("b9").innerHTML =="O") {
+		computerScore = computerScore +1;
+		playerTip = "Computer won!";
+		gameReset();
+	}
+	if (document.getElementById("b3").innerHTML == "X" && document.getElementById("b5").innerHTML == "X" && document.getElementById("b7").innerHTML =="X") {
+		playerScore = playerScore +1;
+		playerTip = "Player won!";
+		gameReset();
+	} else if (document.getElementById("b3").innerHTML == "O" && document.getElementById("b5").innerHTML == "O" && document.getElementById("b7").innerHTML =="O") {
+		computerScore = computerScore +1;
+		playerTip = "Computer won!";
+		gameReset();
+	}
+	
 
 	// AI doesnt choose box if player has already chosen the box ID matching the rng output
 
-	if (generateRandomNumber() == 1 && document.getElementById("b1").innerHTML == "X") {
-		result = result +1;
+	if (computerChoice == 1 && document.getElementById("b1").innerHTML == "X") {
+		computerChoice = computerChoice +1;
 		// make random number generator run again if rng output is equal to player choice value
 	}
 
 	// prevent player from clicking same square twice
 
-	if (document.getElementById("b1").innerHTML == "X" && generateRandomNumber() == 1) {
+	if (document.getElementById("b1").clicked && generateRandomNumber() == 1) {
 		alert("choose another square")
 		// stop random number generator from generating number until player clicks another empty button
 	}
 
 	// resets board when turnCount = 9 to reset board automatically on a tie
 
-	/*if (turnCount == 9) {
-		b1 = document.getElementById("b1").innerHTML = "";
-		b2 = document.getElementById("b2").innerHTML = "";
-		b3 = document.getElementById("b3").innerHTML = "";
-		b4 = document.getElementById("b4").innerHTML = "";
-		b5 = document.getElementById("b5").innerHTML = "";
-		b6 = document.getElementById("b6").innerHTML = "";
-		b7 = document.getElementById("b7").innerHTML = "";
-		b8 = document.getElementById("b8").innerHTML = "";
-		b9 = document.getElementById("b9").innerHTML = "";
-		turnCount = 0;
-	}*/
+	if (turnCount == 9) {
+		gameReset();
+	}
 
 	// alert (playerChoice);  //for debug only
 	// alert (computerChoice); //for debug only
@@ -300,6 +308,5 @@ function equalityCheck (playerChoice, computerChoice) {
 	document.getElementById("playerScoreContent").innerHTML = playerScore;
 	document.getElementById("computerScoreContent").innerHTML = computerScore;
 	document.getElementById("tipContent").innerHTML = playerTip;
-	//document.getElementById("rngOutput").innerHTML = rngOutput;
-	//document.getElementById("turnCount").innerHTML = turnCount;
+	document.getElementById("turnCount").innerHTML = turnCount; // testing only, displays how many times the computer or player has taken a turn and resets on 9 when no one wins
 }
