@@ -23,9 +23,13 @@
 // into a tic tac toe based off of the random number generator					   
 //*********************************************************************************
 
+// NOTES: 
+// 11/8/23, 10:50 AM; current issues, RNG generates the same number twice, when game is reset rng doesnt start until player (X) clicks a square twice
+
 
 let playerScore = 0;
 let computerScore = 0;
+let rngOutput = 0;
 let turnCount = 0;
 
 
@@ -131,38 +135,47 @@ function gameLoop (playerClicked) {
 
 	if (randomNumber == 1) { 
 		document.getElementById("b1").innerHTML = "O";
+		rngOutput = "rng output: " + 1;
 	}
 
 	if (randomNumber == 2) { 
 		document.getElementById("b2").innerHTML = "O";
+		rngOutput = "rng output: " + 2;
 	}
 	
 	if (randomNumber == 3) { 
 		document.getElementById("b3").innerHTML = "O";
+		rngOutput = "rng output: " + 3;
 	}
 
 	if (randomNumber == 4) {
 		document.getElementById("b4").innerHTML = "O";
+		rngOutput = "rng output: " + 4;
 	}
 
 	if (randomNumber == 5) {
 		document.getElementById("b5").innerHTML = "O";
+		rngOutput = "rng output: " + 5;
 	}
 
 	if (randomNumber == 6) {
 		document.getElementById("b6").innerHTML = "O";
+		rngOutput = "rng output: " + 6;
 	}
 
 	if (randomNumber == 7) {
 		document.getElementById("b7").innerHTML = "O";
+		rngOutput = "rng output: " + 7;
 	}
 
 	if (randomNumber == 8) {
 		document.getElementById("b8").innerHTML = "O";
+		rngOutput = "rng output: " + 8;
 	}
 
 	if (randomNumber == 9) {
 		document.getElementById("b9").innerHTML = "O";
+		rngOutput = "rng output: " + 9;
 	}
 
 	// Clears board (working properly now)
@@ -176,7 +189,7 @@ function gameLoop (playerClicked) {
 
 // generates random number 
 function generateRandomNumber () {
-	const result = Math.floor((Math.random() * 9) + 1);
+	const result = Math.floor((Math.random() * 9) +1); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
 	return result; // tested with alert(result); and gen rand num works when a button is clicked
 }
 
@@ -191,6 +204,7 @@ function gameReset () {
 	b8 = document.getElementById("b8").innerHTML = "";
 	b9 = document.getElementById("b9").innerHTML = "";
 	turnCount = 0;
+	rngOutput = 0;
 }
 
 // Logic part of the game
@@ -284,15 +298,85 @@ function equalityCheck (playerChoice, computerChoice) {
 
 	// AI doesnt choose box if player has already chosen the box ID matching the rng output
 
-	if (computerChoice == 1 && document.getElementById("b1").innerHTML == "X") {
-		computerChoice = computerChoice +1;
+	if (document.getElementById("b1").innerHTML == "X" && generateRandomNumber == 1) {
+		alert("computer choice is changed")
+		generateRandomNumber = generateRandomNumber +1;
 		// make random number generator run again if rng output is equal to player choice value
 	}
 
 	// prevent player from clicking same square twice
 
-	if (document.getElementById("b1").clicked && generateRandomNumber() == 1) {
-		alert("choose another square")
+	if (generateRandomNumber == 1 && b1.clicked) {
+		document.getElementById("b1").innerHTML = "O";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (generateRandomNumber == 2 && b2.clicked) {
+		document.getElementById("b2").innerHTML = "O";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (generateRandomNumber == 3 && b3.clicked) {
+		document.getElementById("b3").innerHTML = "O";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (generateRandomNumber == 4 && b4.clicked) {
+		document.getElementById("b4").innerHTML = "O";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (generateRandomNumber == 5 && b5.clicked) {
+		document.getElementById("b5").innerHTML = "O";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (generateRandomNumber == 6 && b6.clicked) {
+		document.getElementById("b6").innerHTML = "O";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (generateRandomNumber == 7 && b7.clicked) {
+		document.getElementById("b7").innerHTML = "O";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (generateRandomNumber == 8 && b8.clicked) {
+		document.getElementById("b8").innerHTML = "O";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (generateRandomNumber == 9 && b9.clicked) {
+		document.getElementById("b9").innerHTML = "O";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+
+	if (b1.clicked && generateRandomNumber == 1) {
+		document.getElementById("b1").innerHTML = "X";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (b2.clicked && generateRandomNumber == 2) {
+		document.getElementById("b2").innerHTML = "X";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (b3.clicked && generateRandomNumber == 3) {
+		document.getElementById("b3").innerHTML = "X";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (b4.clicked && generateRandomNumber == 4) {
+		document.getElementById("b4").innerHTML = "X";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (b5.clicked && generateRandomNumber == 5) {
+		document.getElementById("b5").innerHTML = "X";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (b6.clicked && generateRandomNumber == 6) {
+		document.getElementById("b6").innerHTML = "X";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (b7.clicked && generateRandomNumber == 7) {
+		document.getElementById("b7").innerHTML = "X";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (b8.clicked && generateRandomNumber == 8) {
+		document.getElementById("b8").innerHTML = "X";
+		// stop random number generator from generating number until player clicks another empty button
+	}
+	if (b9.clicked && generateRandomNumber == 9) {
+		document.getElementById("b9").innerHTML = "X";
 		// stop random number generator from generating number until player clicks another empty button
 	}
 
@@ -309,4 +393,5 @@ function equalityCheck (playerChoice, computerChoice) {
 	document.getElementById("computerScoreContent").innerHTML = computerScore;
 	document.getElementById("tipContent").innerHTML = playerTip;
 	document.getElementById("turnCount").innerHTML = turnCount; // testing only, displays how many times the computer or player has taken a turn and resets on 9 when no one wins
+	document.getElementById("rngOutput").innerHTML = rngOutput;
 }
