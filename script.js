@@ -43,7 +43,7 @@ numbers.forEach(number => {
 
 function gameLoop (playerClicked) {
 	const randomNumber = generateRandomNumber()
-	
+
 	document.getElementById("startButton").addEventListener("click", function() {
 		playerTip = "Game Started";
 		gameReset();
@@ -93,57 +93,55 @@ function gameLoop (playerClicked) {
 	}
 	
 	// array for line check 0=(empty space), 10=X, 11=O 
-	let row1 = [1,2,3];
-	let row2 = [4,5,6];
-	let row3 = [7,8,9];
-
-	console.log(row1,row2,row3)
+	let gridArray = [1,2,3,4,5,6,7,8,9];
+	
+ 	console.log(gridArray);
 
 	// change square to X when player clicks a square
 
 	document.getElementById("b1").addEventListener("click", function(){ 
 		document.getElementById("b1").innerHTML = "X";
-		row1[0]='X';
+		gridArray[1]='X';
 	});
 
 	document.getElementById("b2").addEventListener("click", function(){ 
 		document.getElementById("b2").innerHTML = "X";
-		row1[1]='X';
+		gridArray[2]='X';
 	});
 
 	document.getElementById("b3").addEventListener("click", function(){ 
 		document.getElementById("b3").innerHTML = "X";
-		row1[2]='X';
+		gridArray[3]='X';
 	});
 
 	document.getElementById("b4").addEventListener("click", function(){ 
 		document.getElementById("b4").innerHTML = "X";
-		row2[0]='X';		
+		gridArray[4]='X';		
 	});
 
 	document.getElementById("b5").addEventListener("click", function(){ 
 		document.getElementById("b5").innerHTML = "X";
-		row2[1]='X';		
+		gridArray[5]='X';		
 	});
 
 	document.getElementById("b6").addEventListener("click", function(){ 
 		document.getElementById("b6").innerHTML = "X";
-		row2[2]='X';
+		gridArray[6]='X';
 	});
 
 	document.getElementById("b7").addEventListener("click", function(){ 
 		document.getElementById("b7").innerHTML = "X";
-		row3[0]='X';
+		gridArray[7]='X';
 	});
 
 	document.getElementById("b8").addEventListener("click", function(){ 
 		document.getElementById("b8").innerHTML = "X";
-		row3[1]='X';
+		gridArray[8]='X';
 	});
 
 	document.getElementById("b9").addEventListener("click", function(){ 
 		document.getElementById("b9").innerHTML = "X";
-		row3[2]='X';
+		gridArray[9]='X';
 	});
 
 	// AI portion of the javascript code; change square to O accordingly with the RNG output
@@ -151,62 +149,61 @@ function gameLoop (playerClicked) {
 	if (randomNumber == 1) { 
 		document.getElementById("b1").innerHTML = "O";
 		rngOutput = "rng output: " + 1;
-		row1[0]='O';
+		gridArray[1]='O';
 	}
 
 	if (randomNumber == 2) { 
 		document.getElementById("b2").innerHTML = "O";
 		rngOutput = "rng output: " + 2;
-		row1[1]='O';
+		gridArray[2]='O';
 	}
 	
 	if (randomNumber == 3) { 
 		document.getElementById("b3").innerHTML = "O";
 		rngOutput = "rng output: " + 3;
-		row1[2]='O';
+		gridArray[3]='O';
 	}
 
 	if (randomNumber == 4) {
 		document.getElementById("b4").innerHTML = "O";
 		rngOutput = "rng output: " + 4;
-		row2[0]='O';
+		gridArray[4]='O';
 	}
 
 	if (randomNumber == 5) {
 		document.getElementById("b5").innerHTML = "O";
 		rngOutput = "rng output: " + 5;
-		row2[1]='O';
+		gridArray[5]='O';
 	}
 
 	if (randomNumber == 6) {
 		document.getElementById("b6").innerHTML = "O";
 		rngOutput = "rng output: " + 6;	
-		row2[2]='O';
+		gridArray[6]='O';
 	}
 
 	if (randomNumber == 7) {
 		document.getElementById("b7").innerHTML = "O";
 		rngOutput = "rng output: " + 7;
-		row3[0]='O';
+		gridArray[7]='O';
 	}
 
 	if (randomNumber == 8) {
 		document.getElementById("b8").innerHTML = "O";
 		rngOutput = "rng output: " + 8;
-		row3[1]='O';
+		gridArray[8]='O';
 	}
 
 	if (randomNumber == 9) {
 		document.getElementById("b9").innerHTML = "O";
 		rngOutput = "rng output: " + 9;
-		row3[2]='O';		
+		gridArray[9]='O';		
 	}
 
 	// Clears board (working properly now)
 	document.getElementById("resetButton").addEventListener("click", function() {
 		gameReset();
 	});
-
 
 	const computerChoice = randomNumber //for debug only
 	equalityCheck (playerClicked, computerChoice);
@@ -245,164 +242,86 @@ function equalityCheck (playerChoice, computerChoice) {
 	// Line checker, still testing, currently tells you if theres a line pattern
 
 	//straight line
-	if (row1[0]='X',row1[1]='X',row1[2]='X') {
+	if (gridArray[1]=='X' && gridArray[2]=='X' && gridArray[3]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 		gameReset();
-	} else if (row1[0]='O',row1[1]='O',row1[2]='O') {
+	} else if (gridArray[1]=='O' && gridArray[2]=='O' && gridArray[3]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
 		gameReset();
 	}
-	if (row2[0]='X',row2[1]='X',row2[2]='X') {
+	if (gridArray[4]=='X' && gridArray[5]=='X' && gridArray[6]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 		gameReset();
-	} else if (row2[0]='O',row2[1]='O',row2[2]='O') {
+	} else if (gridArray[4]=='O' && gridArray[5]=='O' && gridArray[6]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
 		gameReset();
 	}
-	if (row3[0]='X',row3[1]='X',row3[2]='X') {
+	if (gridArray[7]=='X' && gridArray[8]=='X' && gridArray[9]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 		gameReset();
-	} else if (row3[0]='O',row3[1]='O',row3[2]='O') {
+	} else if (gridArray[7]=='O' && gridArray[8]=='O' && gridArray[9]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
 		gameReset();
 	}
 
 	//diagonal
-	if (row1[0]='X',row2[1]='X',row3[2]='X') {
+	if (gridArray[1]=='X' && gridArray[5]=='X' && gridArray[9]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 		gameReset();
-	} else if (row1[0]='O',row2[1]='O',row3[2]='O') {
+	} else if (gridArray[1]=='O' && gridArray[5]=='O' && gridArray[9]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
 		gameReset();
 	}
-	if (row1[2]='X',row2[1]='X',row3[0]='X') {
+	if (gridArray[3]=='X' && gridArray[5]=='X' && gridArray[7]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 		gameReset();
-	} else if (row1[2]='O',row2[1]='O',row3[0]='O') {
+	} else if (gridArray[3]=='O' && gridArray[5]=='O' && gridArray[7]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
 		gameReset();
 	}
 
 	//downwards and upwards
-	if (row1[0]='X',row2[0]='X',row3[0]='X') {
+	if (gridArray[1]=='X' && gridArray[4]=='X' && gridArray[7]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 		gameReset();
-	} else if (row1[0]='O',row2[0]='O',row3[0]='O') {
+	} else if (gridArray[1]=='O' && gridArray[4]=='O' && gridArray[7]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
 		gameReset();
 	}
-	if (row1[1]='X',row2[1]='X',row3[1]='X') {
+	if (gridArray[2]=='X' && gridArray[5]=='X' && gridArray[8]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 		gameReset();
-	} else if (row1[1]='O',row2[1]='O',row3[1]='O') {
+	} else if (gridArray[2]=='O' && gridArray[5]=='O' && gridArray[8]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
 		gameReset();
 	}
-	if (row1[2]='X',row2[2]='X',row3[2]='X') {
+	if (gridArray[3]=='X' && gridArray[6]=='X' && gridArray[9]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
 		gameReset();
-	} else if (row1[2]='O',row2[2]='O',row3[2]='O') {
+	} else if (gridArray[3]=='O' && gridArray[6]=='O' && gridArray[9]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
 		gameReset();
 	}
-
-	// straight line (left to right), 1,2,3 or 4,5,6 or 7,8,9 (old line checker)
-	/*if (document.getElementById("b1").innerHTML == "X" && document.getElementById("b2").innerHTML == "X" && document.getElementById("b3").innerHTML == "X") {
-		playerScore = playerScore +1;
-		playerTip = "Player won!";
-		gameReset();
-	} else if (document.getElementById("b1").innerHTML == "0" && document.getElementById("b2").innerHTML == "O" && document.getElementById("b3").innerHTML == "X") {
-		computerScore = computerScore +1;
-		playerTip = "Computer Won!";
-		gameReset();
-	}
-	if (document.getElementById("b4").innerHTML == "X" && document.getElementById("b5").innerHTML == "X" && document.getElementById("b6").innerHTML == "X") {
-		playerScore = playerScore +1;
-		playerTip = "Player won!";
-		gameReset();
-	} else if (document.getElementById("b4").innerHTML == "O" && document.getElementById("b5").innerHTML == "O" && document.getElementById("b6").innerHTML == "O") {
-		computerScore = computerScore +1;
-		playerTip = "Computer won!";
-		gameReset();
-	}
-	if (document.getElementById("b7").innerHTML == "X" && document.getElementById("b8").innerHTML == "X" && document.getElementById("b9").innerHTML == "X") {
-		playerScore = playerScore +1;
-		playerTip = "Player won!";
-		gameReset();
-	} else if (document.getElementById("b7").innerHTML == "O" && document.getElementById("b8").innerHTML == "O" && document.getElementById("b9").innerHTML == "O") {
-		computerScore = computerScore +1;
-		playerTip = "Computer won!";
-		gameReset();
-	}
-	
-	// straight line win (downwards), 1,4,7 or 2,5,8 or 3,6,9
-	if (document.getElementById("b1").innerHTML == "X" && document.getElementById("b4").innerHTML == "X" && document.getElementById("b7").innerHTML == "X") {
-		playerScore = playerScore +1;
-		playerTip = "Player won!";
-		gameReset();
-	} else if (document.getElementById("b1").innerHTML == "O" && document.getElementById("b4").innerHTML == "O" && document.getElementById("b7").innerHTML == "O") {
-		playerScore = playerScore +1;
-		playerTip = "Computer won!";
-		gameReset();
-	}
-	if (document.getElementById("b2").innerHTML == "X" && document.getElementById("b5").innerHTML == "X" && document.getElementById("b8").innerHTML == "X") {
-		playerScore = playerScore +1;
-		playerTip = "Player won!";
-		gameReset();
-	} else if (document.getElementById("b2").innerHTML == "O" && document.getElementById("b5").innerHTML == "O" && document.getElementById("b8").innerHTML == "O") {
-		playerScore = playerScore +1;
-		playerTip = "Computer won!";
-		gameReset();
-	}
-	if (document.getElementById("b3").innerHTML == "X" && document.getElementById("b6").innerHTML == "X" && document.getElementById("b9").innerHTML == "X") {
-		playerScore = playerScore +1;
-		playerTip = "Player won!";
-		gameReset();
-	} else if (document.getElementById("b3").innerHTML == "O" && document.getElementById("b6").innerHTML == "O" && document.getElementById("b9").innerHTML == "O") {
-		playerScore = playerScore +1;
-		playerTip = "Computer won!";
-		gameReset();
-	}	
-	
-	// diagonal line win, 1,5,9 or 3,5,7
-	if (document.getElementById("b1").innerHTML == "X" && document.getElementById("b5").innerHTML == "X" && document.getElementById("b9").innerHTML =="X") {
-		playerScore = playerScore +1;
-		playerTip = "Player won!";
-		gameReset();
-	} else if (document.getElementById("b1").innerHTML == "O" && document.getElementById("b5").innerHTML == "O" && document.getElementById("b9").innerHTML =="O") {
-		computerScore = computerScore +1;
-		playerTip = "Computer won!";
-		gameReset();
-	}
-	if (document.getElementById("b3").innerHTML == "X" && document.getElementById("b5").innerHTML == "X" && document.getElementById("b7").innerHTML =="X") {
-		playerScore = playerScore +1;
-		playerTip = "Player won!";
-		gameReset();
-	} else if (document.getElementById("b3").innerHTML == "O" && document.getElementById("b5").innerHTML == "O" && document.getElementById("b7").innerHTML =="O") {
-		computerScore = computerScore +1;
-		playerTip = "Computer won!";
-		gameReset();
-	}*/
 
 	// AI doesnt choose box if player has already chosen the box ID matching the rng output
 
-	if (document.getElementById("b1").innerHTML == "X" && generateRandomNumber == 1) {
+	/*if (row1[0]=='X' && generateRandomNumber == 1) {
 		alert("computer choice is changed")
 		generateRandomNumber = generateRandomNumber +1;
 		// make random number generator run again if rng output is equal to player choice value
@@ -413,76 +332,12 @@ function equalityCheck (playerChoice, computerChoice) {
 	if (generateRandomNumber == 1 && b1.clicked) {
 		document.getElementById("b1").innerHTML = "O";
 		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (generateRandomNumber == 2 && b2.clicked) {
-		document.getElementById("b2").innerHTML = "O";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (generateRandomNumber == 3 && b3.clicked) {
-		document.getElementById("b3").innerHTML = "O";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (generateRandomNumber == 4 && b4.clicked) {
-		document.getElementById("b4").innerHTML = "O";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (generateRandomNumber == 5 && b5.clicked) {
-		document.getElementById("b5").innerHTML = "O";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (generateRandomNumber == 6 && b6.clicked) {
-		document.getElementById("b6").innerHTML = "O";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (generateRandomNumber == 7 && b7.clicked) {
-		document.getElementById("b7").innerHTML = "O";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (generateRandomNumber == 8 && b8.clicked) {
-		document.getElementById("b8").innerHTML = "O";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (generateRandomNumber == 9 && b9.clicked) {
-		document.getElementById("b9").innerHTML = "O";
-		// stop random number generator from generating number until player clicks another empty button
-	}
+	
 
 	if (b1.clicked && generateRandomNumber == 1) {
 		document.getElementById("b1").innerHTML = "X";
 		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (b2.clicked && generateRandomNumber == 2) {
-		document.getElementById("b2").innerHTML = "X";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (b3.clicked && generateRandomNumber == 3) {
-		document.getElementById("b3").innerHTML = "X";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (b4.clicked && generateRandomNumber == 4) {
-		document.getElementById("b4").innerHTML = "X";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (b5.clicked && generateRandomNumber == 5) {
-		document.getElementById("b5").innerHTML = "X";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (b6.clicked && generateRandomNumber == 6) {
-		document.getElementById("b6").innerHTML = "X";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (b7.clicked && generateRandomNumber == 7) {
-		document.getElementById("b7").innerHTML = "X";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (b8.clicked && generateRandomNumber == 8) {
-		document.getElementById("b8").innerHTML = "X";
-		// stop random number generator from generating number until player clicks another empty button
-	}
-	if (b9.clicked && generateRandomNumber == 9) {
-		document.getElementById("b9").innerHTML = "X";
-		// stop random number generator from generating number until player clicks another empty button
-	}
+	}	*/
 
 	// resets board when turnCount = 9 to reset board automatically on a tie
 
