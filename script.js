@@ -101,6 +101,7 @@ function gameLoop (playerClicked) {
 	}
 
 	playerClicked = rngPlayerTurn();
+	rngArrayLogger = rngArray;
 
 	// change square to X when player clicks a square
 
@@ -246,7 +247,7 @@ function generateRandomNumber () {
 	return result; // tested with alert(result); and gen rand num works when a button is clicked
 }
 
-function noRngDoubleChoice () {
+function noRngDoubleChoice (result) {
 	if (result = 0 && document.getElementById("b1").clicked) {
 		rngArray = [1,2,3,4,5,6,7,8];
 	}
