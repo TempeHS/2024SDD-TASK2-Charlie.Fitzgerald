@@ -35,7 +35,9 @@ let rngOutput = 0;
 let turnCount = 0;
 
 let gridLogger = 0;
+let rngArrayLogger = 0;
 let gridArray = [0,1,2,3,4,5,6,7,8]; // array for line check
+let rngArray = [0,1,2,3,4,5,6,7,8]; // number array for rng
 
 const numbers = document.querySelectorAll('.number')
 const screen = document.getElementById('screen')
@@ -47,12 +49,11 @@ numbers.forEach(number => {
 });
 
 function gameLoop (playerClicked) {
-	const randomNumber = generateRandomNumber()
-
 	document.getElementById("startButton").addEventListener("click", function() {
 		playerTip = "Game Started";
 		gameReset();
-		turnCount = turnCount -1;
+		gridArray = [0,1,2,3,4,5,6,7,8];
+		rngArray = [0,1,2,3,4,5,6,7,8];
 	});
 
 	// utilise the randomnumber output to allow the computer to choose a square
@@ -104,117 +105,183 @@ function gameLoop (playerClicked) {
 	document.getElementById("b1").addEventListener("click", function(){ 
 		document.getElementById("b1").innerHTML = "X";
 		gridArray[0]='X';
+		lineCheck();
+		rngPlayerTurn();
 	});
 
 	document.getElementById("b2").addEventListener("click", function(){ 
 		document.getElementById("b2").innerHTML = "X";
 		gridArray[1]='X';
+		lineCheck();
+		rngPlayerTurn();
 	});
 
 	document.getElementById("b3").addEventListener("click", function(){ 
 		document.getElementById("b3").innerHTML = "X";
 		gridArray[2]='X';
+		lineCheck();
+		rngPlayerTurn();
 	});
 
 	document.getElementById("b4").addEventListener("click", function(){ 
 		document.getElementById("b4").innerHTML = "X";
 		gridArray[3]='X';		
+		lineCheck();
+		rngPlayerTurn();
 	});
 
 	document.getElementById("b5").addEventListener("click", function(){ 
 		document.getElementById("b5").innerHTML = "X";
 		gridArray[4]='X';		
+		lineCheck();
+		rngPlayerTurn();
 	});
 
 	document.getElementById("b6").addEventListener("click", function(){ 
 		document.getElementById("b6").innerHTML = "X";
 		gridArray[5]='X';
+		lineCheck();
+		rngPlayerTurn();
 	});
 
 	document.getElementById("b7").addEventListener("click", function(){ 
 		document.getElementById("b7").innerHTML = "X";
 		gridArray[6]='X';
+		lineCheck();
+		rngPlayerTurn();
 	});
 
 	document.getElementById("b8").addEventListener("click", function(){ 
 		document.getElementById("b8").innerHTML = "X";
 		gridArray[7]='X';
+		lineCheck();
+		rngPlayerTurn();
 	});
 
 	document.getElementById("b9").addEventListener("click", function(){ 
 		document.getElementById("b9").innerHTML = "X";
 		gridArray[8]='X';
+		lineCheck();
+		rngPlayerTurn();
 	});
 
+	
+
+	// Clears board (working properly now)
+	document.getElementById("resetButton").addEventListener("click", function() {
+		gameReset();
+	});
+	
+	equalityCheck (playerClicked);
+}
+
+function rngPlayerTurn () {
+	const randomNumber = generateRandomNumber()
+	
 	// AI portion of the javascript code; change square to O accordingly with the RNG output
 
 	if (randomNumber == 1) { 
 		document.getElementById("b1").innerHTML = "O";
 		rngOutput = "rng output: " + 1;
 		gridArray[0]='O';
+		lineCheck();
 	}
 
 	if (randomNumber == 2) { 
 		document.getElementById("b2").innerHTML = "O";
 		rngOutput = "rng output: " + 2;
 		gridArray[1]='O';
+		lineCheck();
 	}
 	
 	if (randomNumber == 3) { 
 		document.getElementById("b3").innerHTML = "O";
 		rngOutput = "rng output: " + 3;
 		gridArray[2]='O';
+		lineCheck();
 	}
 
 	if (randomNumber == 4) {
 		document.getElementById("b4").innerHTML = "O";
 		rngOutput = "rng output: " + 4;
 		gridArray[3]='O';
+		lineCheck();
 	}
 
 	if (randomNumber == 5) {
 		document.getElementById("b5").innerHTML = "O";
 		rngOutput = "rng output: " + 5;
 		gridArray[4]='O';
+		lineCheck();
 	}
 
 	if (randomNumber == 6) {
 		document.getElementById("b6").innerHTML = "O";
 		rngOutput = "rng output: " + 6;	
 		gridArray[5]='O';
+		lineCheck();
 	}
 
 	if (randomNumber == 7) {
 		document.getElementById("b7").innerHTML = "O";
 		rngOutput = "rng output: " + 7;
 		gridArray[6]='O';
+		lineCheck();
 	}
 
 	if (randomNumber == 8) {
 		document.getElementById("b8").innerHTML = "O";
 		rngOutput = "rng output: " + 8;
 		gridArray[7]='O';
+		lineCheck();
 	}
 
 	if (randomNumber == 9) {
 		document.getElementById("b9").innerHTML = "O";
 		rngOutput = "rng output: " + 9;
 		gridArray[8]='O';		
+		lineCheck();
 	}
-
-	// Clears board (working properly now)
-	document.getElementById("resetButton").addEventListener("click", function() {
-		gameReset();
-	});
-
 	const computerChoice = randomNumber //for debug only
-	equalityCheck (playerClicked, computerChoice);
+	equalityCheck (computerChoice);
 }
 
 // generates random number 
 function generateRandomNumber () {
 	const result = Math.floor(Math.random() * 9); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
+	//const result = Array.from({length: 9}, () => Math.floor(Math.random() * 8));
+	noRngDoubleChoice(); // prevents the RNG from generating the same number twice
 	return result; // tested with alert(result); and gen rand num works when a button is clicked
+}
+
+function noRngDoubleChoice () {
+	if (result = 0 && document.getElementById("b1").clicked) {
+		rngArray = [1,2,3,4,5,6,7,8];
+	}
+	if (result = 1 && document.getElementById("b2").clicked) {
+		rngArray = [0,2,3,4,5,6,7,8];
+	}
+	if (result = 2 && document.getElementById("b3").clicked) {
+		rngArray = [0,1,3,4,5,6,7,8];
+	}
+	if (result = 3 && document.getElementById("b4").clicked) {
+		rngArray = [0,1,2,4,5,6,7,8];
+	}
+	if (result = 4 && document.getElementById("b5").clicked) {
+		rngArray = [0,1,2,3,5,6,7,8];
+	}
+	if (result = 5 && document.getElementById("b6").clicked) {
+		rngArray = [0,1,2,3,4,6,7,8];
+	}
+	if (result = 6 && document.getElementById("b7").clicked) {
+		rngArray = [0,1,2,3,4,5,7,8];
+	}
+	if (result = 7 && document.getElementById("b8").clicked) {
+		rngArray = [0,1,2,3,4,5,6,8];
+	}
+	if (result = 8 && document.getElementById("b9").clicked) {
+		rngArray = [0,1,2,3,4,5,6,7];
+	}
 }
 
 function gameReset () {
@@ -235,14 +302,7 @@ function gameReset () {
 
 // Logic part of the game
 
-function equalityCheck (playerChoice, computerChoice) {
-	// perform an equality check, update scores and output a string using concatenation that gives user feedback 
-
-	// create if statements that detect 3 crosses or circles in a row and decide the winner
-	// create logic that plots the circles by the computer (player will be crosses and computer will be circles)
-	
-	//let playerTip = 0; // only for testing at the moment
-
+function lineCheck () {
 	// Line checker, still testing, currently tells you if theres a line pattern
 
 	//straight line
@@ -322,14 +382,23 @@ function equalityCheck (playerChoice, computerChoice) {
 		playerTip = "Computer Won!";
 		gameReset();
 	}
+}
+
+function equalityCheck (playerChoice, computerChoice) {
+	// perform an equality check, update scores and output a string using concatenation that gives user feedback 
+
+	// create if statements that detect 3 crosses or circles in a row and decide the winner
+	// create logic that plots the circles by the computer (player will be crosses and computer will be circles)
+	
+	//let playerTip = 0; // only for testing at the moment
 
 	//AI doesnt choose box if player has already chosen the box ID matching the rng output
 
-	if (gridArray[1]=='X' && generateRandomNumber == 1) {
+	/*if (gridArray[1]=='X' && generateRandomNumber == 1) {
 		alert("computer choice is changed")
 		result = +4;
 		// make random number generator run again if rng output is equal to player choice value
-	}
+	}*/
 
 	// prevent player from clicking same square twice
 
@@ -359,4 +428,5 @@ function equalityCheck (playerChoice, computerChoice) {
 	document.getElementById("turnCount").innerHTML = turnCount; // testing only, displays how many times the computer or player has taken a turn and resets on 9 when no one wins
 	document.getElementById("rngOutput").innerHTML = rngOutput;
 	document.getElementById("gridLogger").innerHTML = gridLogger;
+	document.getElementById("rngArrayLogger").innerHTML = rngArrayLogger;
 }
