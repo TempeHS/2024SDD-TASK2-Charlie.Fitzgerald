@@ -100,69 +100,62 @@ function gameLoop (playerClicked) {
 		turnCount = turnCount +1;
 	}
 
+	playerClicked = rngPlayerTurn();
+
 	// change square to X when player clicks a square
 
 	document.getElementById("b1").addEventListener("click", function(){ 
 		document.getElementById("b1").innerHTML = "X";
 		gridArray[0]='X';
 		lineCheck();
-		rngPlayerTurn();
 	});
 
 	document.getElementById("b2").addEventListener("click", function(){ 
 		document.getElementById("b2").innerHTML = "X";
 		gridArray[1]='X';
 		lineCheck();
-		rngPlayerTurn();
 	});
 
 	document.getElementById("b3").addEventListener("click", function(){ 
 		document.getElementById("b3").innerHTML = "X";
 		gridArray[2]='X';
 		lineCheck();
-		rngPlayerTurn();
 	});
 
 	document.getElementById("b4").addEventListener("click", function(){ 
 		document.getElementById("b4").innerHTML = "X";
 		gridArray[3]='X';		
 		lineCheck();
-		rngPlayerTurn();
 	});
 
 	document.getElementById("b5").addEventListener("click", function(){ 
 		document.getElementById("b5").innerHTML = "X";
 		gridArray[4]='X';		
 		lineCheck();
-		rngPlayerTurn();
 	});
 
 	document.getElementById("b6").addEventListener("click", function(){ 
 		document.getElementById("b6").innerHTML = "X";
 		gridArray[5]='X';
 		lineCheck();
-		rngPlayerTurn();
 	});
 
 	document.getElementById("b7").addEventListener("click", function(){ 
 		document.getElementById("b7").innerHTML = "X";
 		gridArray[6]='X';
 		lineCheck();
-		rngPlayerTurn();
 	});
 
 	document.getElementById("b8").addEventListener("click", function(){ 
 		document.getElementById("b8").innerHTML = "X";
 		gridArray[7]='X';
 		lineCheck();
-		rngPlayerTurn();
 	});
 
 	document.getElementById("b9").addEventListener("click", function(){ 
 		document.getElementById("b9").innerHTML = "X";
 		gridArray[8]='X';
 		lineCheck();
-		rngPlayerTurn();
 	});
 
 	
@@ -248,8 +241,7 @@ function rngPlayerTurn () {
 
 // generates random number 
 function generateRandomNumber () {
-	const result = Math.floor(Math.random() * 9); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
-	//const result = Array.from({length: 9}, () => Math.floor(Math.random() * 8));
+	const result = Math.floor(Math.random() * rngArray.length); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
 	noRngDoubleChoice(); // prevents the RNG from generating the same number twice
 	return result; // tested with alert(result); and gen rand num works when a button is clicked
 }
