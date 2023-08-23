@@ -95,14 +95,10 @@ function gameLoop (playerClicked) {
 
 	// change square to X when player clicks a square
 
-	document.getElementById("b1").addEventListener("click", function(){ 
-		document.getElementById("b1").innerHTML = "X";
-		gridArray[0]='X';
-		lineCheck();
-		//document.getElementById("b1").disabled = true;
-	});
+	//document.getElementById("b1").addEventListener("click", function(){ 
+	
 
-	document.getElementById("b2").addEventListener("click", function(){ 
+	/*document.getElementById("b2").addEventListener("click", function(){ 
 		document.getElementById("b2").innerHTML = "X";
 		gridArray[1]='X';
 		lineCheck();
@@ -156,7 +152,7 @@ function gameLoop (playerClicked) {
 		gridArray[8]='X';
 		lineCheck();
 		//document.getElementById("b9").disabled = true;
-	});
+	});*/
 
 	
 
@@ -168,90 +164,119 @@ function gameLoop (playerClicked) {
 	equalityCheck (playerClicked);
 }
 
+function gameLoop1 (b1Click) {
+	document.getElementById(b1Click).innerHTML = "X";
+	gridArray[document.getElementById(b1Click).value]='X';
+	lineCheck();
+	gameLoop(b1Click);
+	rngArray.splice (document.getElementById(b1Click).value, 1);
+	document.getElementById(b1Click).disabled = true;
+}
+
 function rngPlayerTurn () {
-	const randomNumber = generateRandomNumber()
-	
+	const randomNumber = generateRandomNumber();
+
 	// AI portion of the javascript code; change square to O accordingly with the RNG output
 
 	if (randomNumber == 1) { 
-		document.getElementById("b1").innerHTML = "O";
-		rngOutput = "rng output: " + 1;
-		gridArray[0]='O';
-		rngArray.splice (0,1);
-		lineCheck();
-		//document.getElementById("b1").disabled = true;
+		if (gridArray[0] == 'X' || gridArray[0] == 'O') {
+			rngPlayerTurn();
+		} else {
+			document.getElementById("b1").innerHTML = "O";
+			rngOutput = "rng output: " + 1;
+			gridArray[0]='O';
+			lineCheck();
+			document.getElementById("b1").disabled = true;
+		}
 	}
 
 	if (randomNumber == 2) { 
-		document.getElementById("b2").innerHTML = "O";
-		rngOutput = "rng output: " + 2;
-		gridArray[1]='O';
-		rngArray.splice (1,1);
-		lineCheck();
-		//document.getElementById("b2").disabled = true;
+		if (gridArray[1] == 'X' || gridArray[1] == 'O') {
+			rngPlayerTurn();
+		} else {
+			document.getElementById("b2").innerHTML = "O";
+			rngOutput = "rng output: " + 1;
+			gridArray[0]='O';
+			lineCheck();
+			document.getElementById("b2").disabled = true;
+		}
 	}
 	
 	if (randomNumber == 3) { 
 		document.getElementById("b3").innerHTML = "O";
 		rngOutput = "rng output: " + 3;
 		gridArray[2]='O';
-		rngArray.splice (2,1);
 		lineCheck();
-		//document.getElementById("b3").disabled = true;
+		document.getElementById("b3").disabled = true;
+		if (result == 3 && gridArray[1] == 'X') {
+			rngPlayerTurn();
+		}
 	}
 
 	if (randomNumber == 4) {
 		document.getElementById("b4").innerHTML = "O";
 		rngOutput = "rng output: " + 4;
 		gridArray[3]='O';
-		rngArray.splice (3,1);
 		lineCheck();
-		//document.getElementById("b4").disabled = true;
+		document.getElementById("b4").disabled = true;
+		if (result == 2 && gridArray[1] == 'X') {
+			rngPlayerTurn();
+		}
 	}
 
 	if (randomNumber == 5) {
 		document.getElementById("b5").innerHTML = "O";
 		rngOutput = "rng output: " + 5;
 		gridArray[4]='O';
-		rngArray.splice (4,1);
 		lineCheck();
-		//document.getElementById("b5").disabled = true;
+		document.getElementById("b5").disabled = true;
+		if (result == 2 && gridArray[1] == 'X') {
+			rngPlayerTurn();
+		}
 	}
 
 	if (randomNumber == 6) {
 		document.getElementById("b6").innerHTML = "O";
 		rngOutput = "rng output: " + 6;	
 		gridArray[5]='O';
-		rngArray.splice (5,1);
 		lineCheck();
-		//document.getElementById("b6").disabled = true;
+		document.getElementById("b6").disabled = true;
+		if (result == 2 && gridArray[1] == 'X') {
+			rngPlayerTurn();
+		}
 	}
 
 	if (randomNumber == 7) {
 		document.getElementById("b7").innerHTML = "O";
 		rngOutput = "rng output: " + 7;
 		gridArray[6]='O';
-		rngArray.splice (6,1);
 		lineCheck();
-		//document.getElementById("b7").disabled = true;
+		document.getElementById("b7").disabled = true;
+		if (result == 2 && gridArray[1] == 'X') {
+			rngPlayerTurn();
+		}
 	}
 
 	if (randomNumber == 8) {
 		document.getElementById("b8").innerHTML = "O";
 		rngOutput = "rng output: " + 8;
 		gridArray[7]='O';
-		rngArray.splice (7,1);
 		lineCheck();
-		//document.getElementById("b8").disabled = true;
+		document.getElementById("b8").disabled = true;
+		if (result == 2 && gridArray[1] == 'X') {
+			rngPlayerTurn();
+		}
 	}
 
 	if (randomNumber == 9) {
 		document.getElementById("b9").innerHTML = "O";
 		rngOutput = "rng output: " + 9;
 		gridArray[8]='O';		
-		rngArray.splice (8,1);
 		lineCheck();
-		//document.getElementById("b9").disabled = true;
+		document.getElementById("b9").disabled = true;
+		if (result == 2 && gridArray[1] == 'X') {
+			rngPlayerTurn();
+		}
 	}
 	const computerChoice = randomNumber //for debug only
 	equalityCheck (computerChoice);
@@ -259,7 +284,7 @@ function rngPlayerTurn () {
 
 // generates random number 
 function generateRandomNumber () {
-	const result = Math.floor(Math.random() * rngArray.length); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
+	const result = Math.floor(Math.random() * 8); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
 	return result; // tested with alert(result); and gen rand num works when a button is clicked
 }
 
@@ -273,7 +298,7 @@ function gameReset () {
 	b7 = document.getElementById("b7").innerHTML = "";
 	b8 = document.getElementById("b8").innerHTML = "";
 	b9 = document.getElementById("b9").innerHTML = "";
-	/*document.getElementById("b1").disabled = false;
+	document.getElementById("b1").disabled = false;
 	document.getElementById("b2").disabled = false;
 	document.getElementById("b3").disabled = false;
 	document.getElementById("b4").disabled = false;
@@ -281,7 +306,7 @@ function gameReset () {
 	document.getElementById("b6").disabled = false;
 	document.getElementById("b7").disabled = false;
 	document.getElementById("b8").disabled = false;
-	document.getElementById("b9").disabled = false;*/
+	document.getElementById("b9").disabled = false;
 	turnCount = 0;
 	rngOutput = 0;
 	gridArray = [0,1,2,3,4,5,6,7,8];
