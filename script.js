@@ -26,6 +26,7 @@
 // NOTES: 
 // 11/8/23, 10:50 AM; current issues, RNG generates the same number twice, when game is reset rng doesnt start until player (X) clicks a square twice
 // 14/8/23, 5:30 PM; rng generating numbers twice still not solved, tictactoe data now is in javascript rather than checking the HTML file, previous issues still not solved.
+// 24/8/23 12:25 PM; rng problems does not generate same number twice, the 3rd square that is clicked by rng or player that creates win does not get a label change to show proper line up.
 
 
 
@@ -64,98 +65,14 @@ function gameLoop (playerClicked) {
 	let b8 = document.getElementById("b8");
 	let b9 = document.getElementById("b9");
 
-	// adds a point to turn counter when a player or computer takes a turn (not working)
-	
-	/*if (b1.clicked) {
-		turnCount = turnCount +1;
-		} else if (b2.clicked) {
-		turnCount = turnCount +1;
-		} else if (b3.clicked) {
-		turnCount = turnCount +1;
-		} else if (b4.clicked) {
-		turnCount = turnCount +1;
-		} else if (b5.clicked) {
-		turnCount = turnCount +1;
-		} else if (b6.clicked) {
-		turnCount = turnCount +1;
-		} else if (b7.clicked) {
-		turnCount = turnCount +1;
-		} else if (b8.clicked) {
-		turnCount = turnCount +1;
-		} else if (b9.clicked) {
-		turnCount = turnCount +1;
-	}*/
-
+	// adds a point to turn counter when a player or computer takes a turn 
 	if (playerClicked) {
 		turnCount = turnCount +1;
 	}
 
 	playerClicked = rngPlayerTurn();
 	rngArrayLogger = rngArray;
-
-	// change square to X when player clicks a square
-
-	//document.getElementById("b1").addEventListener("click", function(){ 
 	
-
-	/*document.getElementById("b2").addEventListener("click", function(){ 
-		document.getElementById("b2").innerHTML = "X";
-		gridArray[1]='X';
-		lineCheck();
-		//document.getElementById("b2").disabled = true;
-	});
-
-	document.getElementById("b3").addEventListener("click", function(){ 
-		document.getElementById("b3").innerHTML = "X";
-		gridArray[2]='X';
-		lineCheck();
-		//document.getElementById("b3").disabled = true;
-	});
-
-	document.getElementById("b4").addEventListener("click", function(){ 
-		document.getElementById("b4").innerHTML = "X";
-		gridArray[3]='X';		
-		lineCheck();
-		//document.getElementById("b4").disabled = true;
-	});
-
-	document.getElementById("b5").addEventListener("click", function(){ 
-		document.getElementById("b5").innerHTML = "X";
-		gridArray[4]='X';		
-		lineCheck();
-		//document.getElementById("b5").disabled = true;
-	});
-
-	document.getElementById("b6").addEventListener("click", function(){ 
-		document.getElementById("b6").innerHTML = "X";
-		gridArray[5]='X';
-		lineCheck();
-		//document.getElementById("b6").disabled = true;
-	});
-
-	document.getElementById("b7").addEventListener("click", function(){ 
-		document.getElementById("b7").innerHTML = "X";
-		gridArray[6]='X';
-		lineCheck();
-		//document.getElementById("b7").disabled = true;
-	});
-
-	document.getElementById("b8").addEventListener("click", function(){ 
-		document.getElementById("b8").innerHTML = "X";
-		gridArray[7]='X';
-		lineCheck();
-		//document.getElementById("b8").disabled = true;
-	});
-
-	document.getElementById("b9").addEventListener("click", function(){ 
-		document.getElementById("b9").innerHTML = "X";
-		gridArray[8]='X';
-		lineCheck();
-		//document.getElementById("b9").disabled = true;
-	});*/
-
-	
-
 	// Clears board (working properly now)
 	document.getElementById("resetButton").addEventListener("click", function() {
 		gameReset();
@@ -164,13 +81,14 @@ function gameLoop (playerClicked) {
 	equalityCheck (playerClicked);
 }
 
-function gameLoop1 (b1Click) {
-	document.getElementById(b1Click).innerHTML = "X";
-	gridArray[document.getElementById(b1Click).value]='X';
+function gameLoop1 (playerSquareClick) {
+	document.getElementById(playerSquareClick).innerHTML = "X";
+	gridArray[document.getElementById(playerSquareClick).value]='X';
 	lineCheck();
-	gameLoop(b1Click);
-	rngArray.splice (document.getElementById(b1Click).value, 1);
-	document.getElementById(b1Click).disabled = true;
+	gameLoop(playerSquareClick);
+	rngArray.splice (document.getElementById(playerSquareClick).value, 1);
+	document.getElementById(playerSquareClick).disabled = true;
+	equalityCheck (playerSquareClick);
 }
 
 function rngPlayerTurn () {
@@ -196,86 +114,93 @@ function rngPlayerTurn () {
 		} else {
 			document.getElementById("b2").innerHTML = "O";
 			rngOutput = "rng output: " + 1;
-			gridArray[0]='O';
+			gridArray[1]='O';
 			lineCheck();
 			document.getElementById("b2").disabled = true;
 		}
 	}
 	
 	if (randomNumber == 3) { 
-		document.getElementById("b3").innerHTML = "O";
-		rngOutput = "rng output: " + 3;
-		gridArray[2]='O';
-		lineCheck();
-		document.getElementById("b3").disabled = true;
-		if (result == 3 && gridArray[1] == 'X') {
+		if (gridArray[2] == 'X' || gridArray[2] == 'O') {
 			rngPlayerTurn();
+		} else {
+			document.getElementById("b3").innerHTML = "O";
+			rngOutput = "rng output: " + 1;
+			gridArray[2]='O';
+			lineCheck();
+			document.getElementById("b3").disabled = true;
 		}
 	}
 
 	if (randomNumber == 4) {
-		document.getElementById("b4").innerHTML = "O";
-		rngOutput = "rng output: " + 4;
-		gridArray[3]='O';
-		lineCheck();
-		document.getElementById("b4").disabled = true;
-		if (result == 2 && gridArray[1] == 'X') {
+		if (gridArray[3] == 'X' || gridArray[3] == 'O') {
 			rngPlayerTurn();
+		} else {
+			document.getElementById("b4").innerHTML = "O";
+			rngOutput = "rng output: " + 1;
+			gridArray[3]='O';
+			lineCheck();
+			document.getElementById("b4").disabled = true;
 		}
 	}
 
 	if (randomNumber == 5) {
-		document.getElementById("b5").innerHTML = "O";
-		rngOutput = "rng output: " + 5;
-		gridArray[4]='O';
-		lineCheck();
-		document.getElementById("b5").disabled = true;
-		if (result == 2 && gridArray[1] == 'X') {
+		if (gridArray[4] == 'X' || gridArray[4] == 'O') {
 			rngPlayerTurn();
+		} else {
+			document.getElementById("b5").innerHTML = "O";
+			rngOutput = "rng output: " + 1;
+			gridArray[4]='O';
+			lineCheck();
+			document.getElementById("b5").disabled = true;
 		}
 	}
 
 	if (randomNumber == 6) {
-		document.getElementById("b6").innerHTML = "O";
-		rngOutput = "rng output: " + 6;	
-		gridArray[5]='O';
-		lineCheck();
-		document.getElementById("b6").disabled = true;
-		if (result == 2 && gridArray[1] == 'X') {
+		if (gridArray[5] == 'X' || gridArray[5] == 'O') {
 			rngPlayerTurn();
+		} else {
+			document.getElementById("b6").innerHTML = "O";
+			rngOutput = "rng output: " + 1;
+			gridArray[5]='O';
+			lineCheck();
+			document.getElementById("b6").disabled = true;
 		}
 	}
 
 	if (randomNumber == 7) {
-		document.getElementById("b7").innerHTML = "O";
-		rngOutput = "rng output: " + 7;
-		gridArray[6]='O';
-		lineCheck();
-		document.getElementById("b7").disabled = true;
-		if (result == 2 && gridArray[1] == 'X') {
+		if (gridArray[6] == 'X' || gridArray[6] == 'O') {
 			rngPlayerTurn();
+		} else {
+			document.getElementById("b7").innerHTML = "O";
+			rngOutput = "rng output: " + 1;
+			gridArray[6]='O';
+			lineCheck();
+			document.getElementById("b7").disabled = true;
 		}
 	}
 
 	if (randomNumber == 8) {
-		document.getElementById("b8").innerHTML = "O";
-		rngOutput = "rng output: " + 8;
-		gridArray[7]='O';
-		lineCheck();
-		document.getElementById("b8").disabled = true;
-		if (result == 2 && gridArray[1] == 'X') {
+		if (gridArray[7] == 'X' || gridArray[7] == 'O') {
 			rngPlayerTurn();
+		} else {
+			document.getElementById("b8").innerHTML = "O";
+			rngOutput = "rng output: " + 1;
+			gridArray[7]='O';
+			lineCheck();
+			document.getElementById("b8").disabled = true;
 		}
 	}
 
 	if (randomNumber == 9) {
-		document.getElementById("b9").innerHTML = "O";
-		rngOutput = "rng output: " + 9;
-		gridArray[8]='O';		
-		lineCheck();
-		document.getElementById("b9").disabled = true;
-		if (result == 2 && gridArray[1] == 'X') {
+		if (gridArray[8] == 'X' || gridArray[8] == 'O') {
 			rngPlayerTurn();
+		} else {
+			document.getElementById("b9").innerHTML = "O";
+			rngOutput = "rng output: " + 1;
+			gridArray[8]='O';
+			lineCheck();
+			document.getElementById("b9").disabled = true;
 		}
 	}
 	const computerChoice = randomNumber //for debug only
@@ -284,7 +209,7 @@ function rngPlayerTurn () {
 
 // generates random number 
 function generateRandomNumber () {
-	const result = Math.floor(Math.random() * 8); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
+	const result = (Math.floor(Math.random() * 8) +1); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
 	return result; // tested with alert(result); and gen rand num works when a button is clicked
 }
 
@@ -314,6 +239,15 @@ function gameReset () {
 	//window.location.reload(true); //resets page
 }
 
+// allows javascript to wait a set amount of time in ms before executing the next line of code (for debug at the moment)
+function wait(ms){
+	var start = new Date().getTime();
+	var end = start;
+	while(end < start + ms) {
+	  end = new Date().getTime();
+   }
+ } 
+
 // Logic part of the game
 
 function lineCheck () {
@@ -323,28 +257,34 @@ function lineCheck () {
 	if (gridArray[0]=='X' && gridArray[1]=='X' && gridArray[2]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
+		wait(2000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[1]=='O' && gridArray[2]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
+		wait(2000);
 		gameReset();
 	}
 	if (gridArray[3]=='X' && gridArray[4]=='X' && gridArray[5]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
+		wait(2000);
 		gameReset();
 	} else if (gridArray[3]=='O' && gridArray[4]=='O' && gridArray[5]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
+		wait(2000);
 		gameReset();
 	}
 	if (gridArray[6]=='X' && gridArray[6]=='X' && gridArray[8]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
+		wait(2000);
 		gameReset();
 	} else if (gridArray[6]=='O' && gridArray[6]=='O' && gridArray[8]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
+		wait(2000);
 		gameReset();
 	}
 
@@ -352,19 +292,23 @@ function lineCheck () {
 	if (gridArray[0]=='X' && gridArray[4]=='X' && gridArray[8]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
+		wait(2000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[4]=='O' && gridArray[8]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
+		wait(2000);
 		gameReset();
 	}
 	if (gridArray[2]=='X' && gridArray[4]=='X' && gridArray[6]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
+		wait(2000);
 		gameReset();
 	} else if (gridArray[2]=='O' && gridArray[4]=='O' && gridArray[6]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
+		wait(2000);
 		gameReset();
 	}
 
@@ -372,28 +316,34 @@ function lineCheck () {
 	if (gridArray[0]=='X' && gridArray[3]=='X' && gridArray[6]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
+		wait(2000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[3]=='O' && gridArray[6]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
+		wait(2000);
 		gameReset();
 	}
 	if (gridArray[1]=='X' && gridArray[4]=='X' && gridArray[7]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
+		wait(2000);
 		gameReset();
 	} else if (gridArray[1]=='O' && gridArray[4]=='O' && gridArray[7]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
+		wait(2000);
 		gameReset();
 	}
 	if (gridArray[2]=='X' && gridArray[5]=='X' && gridArray[8]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
+		wait(2000);
 		gameReset();
 	} else if (gridArray[2]=='O' && gridArray[5]=='O' && gridArray[8]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
+		wait(2000);
 		gameReset();
 	}
 }
@@ -409,7 +359,9 @@ function equalityCheck (playerChoice, computerChoice) {
 	// resets board when turnCount = 9 to reset board automatically on a tie
 
 	if (turnCount == 9) {
+		wait(2000);
 		gameReset();
+		playerTip = "Tie! Go Again."
 	}
 
 	// alert (playerChoice);  //for debug only
