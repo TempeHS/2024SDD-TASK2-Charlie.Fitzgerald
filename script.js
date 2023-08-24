@@ -26,20 +26,17 @@
 // NOTES: 
 // 11/8/23, 10:50 AM; current issues, RNG generates the same number twice, when game is reset rng doesnt start until player (X) clicks a square twice
 // 14/8/23, 5:30 PM; rng generating numbers twice still not solved, tictactoe data now is in javascript rather than checking the HTML file, previous issues still not solved.
-// 24/8/23 12:25 PM; rng problems does not generate same number twice, the 3rd square that is clicked by rng or player that creates win does not get a label change to show proper line up.
+// 24/8/23 12:25 PM; rng problems listed above solved, the 3rd square that is clicked by rng or player does not get changed to X or O (needs fixing asap)
 
-
-
+// initial variables
 let playerScore = 0;
 let computerScore = 0;
 let rngOutput = 0;
 let turnCount = 0;
 
-let gridLogger = 0;
-let rngArrayLogger = 0;
 let gridArray = [0,1,2,3,4,5,6,7,8]; // array for line check
-let rngArray = [0,1,2,3,4,5,6,7,8]; // number array for rng
 
+// chunk of code that runs when a button is clicked
 function gameLoop (playerClicked) {
 	document.getElementById("startButton").addEventListener("click", function() {
 		playerTip = "Game Started";
@@ -70,8 +67,7 @@ function gameLoop (playerClicked) {
 		turnCount = turnCount +1;
 	}
 
-	playerClicked = rngPlayerTurn();
-	rngArrayLogger = rngArray;
+	playerClicked = rngPlayerTurn(); // without this the rng will do nothing, essentially makes the rng take a turn when the player clicks a square
 	
 	// Clears board (working properly now)
 	document.getElementById("resetButton").addEventListener("click", function() {
@@ -81,6 +77,7 @@ function gameLoop (playerClicked) {
 	equalityCheck (playerClicked);
 }
 
+// main gameloop that now handles all the player and rng turns
 function gameLoop1 (playerSquareClick) {
 	document.getElementById(playerSquareClick).innerHTML = "X";
 	gridArray[document.getElementById(playerSquareClick).value]='X';
@@ -207,7 +204,7 @@ function rngPlayerTurn () {
 	equalityCheck (computerChoice);
 }
 
-// generates random number 
+// generates random number, the heart of the low minded computer player.
 function generateRandomNumber () {
 	const result = (Math.floor(Math.random() * 8) +1); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
 	return result; // tested with alert(result); and gen rand num works when a button is clicked
@@ -235,7 +232,6 @@ function gameReset () {
 	turnCount = 0;
 	rngOutput = 0;
 	gridArray = [0,1,2,3,4,5,6,7,8];
-	rngArray = [0,1,2,3,4,5,6,7,8];
 	//window.location.reload(true); //resets page
 }
 
@@ -251,40 +247,40 @@ function wait(ms){
 // Logic part of the game
 
 function lineCheck () {
-	// Line checker, still testing, currently tells you if theres a line pattern
+	// Line checker, currently works great but still needs some improvement, currently tells you if theres a line pattern
 
 	//straight line
 	if (gridArray[0]=='X' && gridArray[1]=='X' && gridArray[2]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[1]=='O' && gridArray[2]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	}
 	if (gridArray[3]=='X' && gridArray[4]=='X' && gridArray[5]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	} else if (gridArray[3]=='O' && gridArray[4]=='O' && gridArray[5]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	}
 	if (gridArray[6]=='X' && gridArray[6]=='X' && gridArray[8]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	} else if (gridArray[6]=='O' && gridArray[6]=='O' && gridArray[8]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	}
 
@@ -292,23 +288,23 @@ function lineCheck () {
 	if (gridArray[0]=='X' && gridArray[4]=='X' && gridArray[8]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[4]=='O' && gridArray[8]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	}
 	if (gridArray[2]=='X' && gridArray[4]=='X' && gridArray[6]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	} else if (gridArray[2]=='O' && gridArray[4]=='O' && gridArray[6]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	}
 
@@ -316,34 +312,34 @@ function lineCheck () {
 	if (gridArray[0]=='X' && gridArray[3]=='X' && gridArray[6]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[3]=='O' && gridArray[6]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	}
 	if (gridArray[1]=='X' && gridArray[4]=='X' && gridArray[7]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	} else if (gridArray[1]=='O' && gridArray[4]=='O' && gridArray[7]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	}
 	if (gridArray[2]=='X' && gridArray[5]=='X' && gridArray[8]=='X') {
 		playerScore = playerScore +1;
 		playerTip = "Player won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	} else if (gridArray[2]=='O' && gridArray[5]=='O' && gridArray[8]=='O') {
 		computerScore = computerScore +1;
 		playerTip = "Computer Won!";
-		wait(2000);
+		wait(1000);
 		gameReset();
 	}
 }
@@ -359,7 +355,7 @@ function equalityCheck (playerChoice, computerChoice) {
 	// resets board when turnCount = 9 to reset board automatically on a tie
 
 	if (turnCount == 9) {
-		wait(2000);
+		wait(1000);
 		gameReset();
 		playerTip = "Tie! Go Again."
 	}
@@ -374,5 +370,4 @@ function equalityCheck (playerChoice, computerChoice) {
 	document.getElementById("turnCount").innerHTML = turnCount; // testing only, displays how many times the computer or player has taken a turn and resets on 9 when no one wins
 	document.getElementById("rngOutput").innerHTML = rngOutput;
 	document.getElementById("gridLogger").innerHTML = gridLogger;
-	document.getElementById("rngArrayLogger").innerHTML = rngArrayLogger;
 }
