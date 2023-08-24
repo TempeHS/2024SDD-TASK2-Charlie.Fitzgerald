@@ -83,7 +83,6 @@ function gameLoop1 (playerSquareClick) {
 	gridArray[document.getElementById(playerSquareClick).value]='X';
 	lineCheck();
 	gameLoop(playerSquareClick);
-	rngArray.splice (document.getElementById(playerSquareClick).value, 1);
 	document.getElementById(playerSquareClick).disabled = true;
 	equalityCheck (playerSquareClick);
 }
@@ -355,9 +354,9 @@ function equalityCheck (playerChoice, computerChoice) {
 	// resets board when turnCount = 9 to reset board automatically on a tie
 
 	if (turnCount == 9) {
+		playerTip = "Tie! Go Again.";
 		wait(1000);
 		gameReset();
-		playerTip = "Tie! Go Again."
 	}
 
 	// alert (playerChoice);  //for debug only
