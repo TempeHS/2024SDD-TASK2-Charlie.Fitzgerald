@@ -38,11 +38,6 @@ let gridArray = [0,1,2,3,4,5,6,7,8]; // array for line check
 
 // chunk of code that runs when a button is clicked
 function gameLoop (playerClicked) {
-	document.getElementById("startButton").addEventListener("click", function() {
-		playerTip = "Game Started";
-		gameReset();
-		gridArray = [0,1,2,3,4,5,6,7,8];
-	});
 
 	// utilise the randomnumber output to allow the computer to choose a square
 	// convert random number outputs into a value that can be assigned into a square
