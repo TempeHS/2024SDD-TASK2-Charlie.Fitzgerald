@@ -1,7 +1,5 @@
 //*********************************************************************************
-// written by Ben Jones															   
-//																				   
-// edited by:																	   
+// written by:																   
 // ▄████▄   ██░ ██  ▄▄▄       ██▀███   ██▓     ██▓▓█████ 						   
 // ▒██▀ ▀█  ▓██░ ██▒▒████▄    ▓██ ▒ ██▒▓██▒    ▓██▒▓█   ▀						    
 // ▒▓█    ▄ ▒██▀▀██░▒██  ▀█▄  ▓██ ░▄█ ▒▒██░    ▒██▒▒███  						    
@@ -12,7 +10,7 @@
 // ░         ░  ░░ ░  ░   ▒     ░░   ░   ░ ░    ▒ ░   ░   						   
 // ░ ░       ░  ░  ░      ░  ░   ░         ░  ░ ░     ░  ░						   
 // ░                                                      						   
-// Student boilerplate to make a OOP Rock Paper Scissors						   
+// Student boilerplate to make a OOP Rock Paper Scissors (orignally written by ben jones)						   
 // - OOP - Const data type - Passing data into methods							   
 //																				   
 // Written 22/6/2023															   
@@ -27,14 +25,17 @@
 // 11/8/23, 10:50 AM; current issues, RNG generates the same number twice, when game is reset rng doesnt start until player (X) clicks a square twice
 // 14/8/23, 5:30 PM; rng generating numbers twice still not solved, tictactoe data now is in javascript rather than checking the HTML file, previous issues still not solved.
 // 24/8/23 12:25 PM; rng problems listed above solved, the 3rd square that is clicked by rng or player does not get changed to X or O (needs fixing asap)
-// 28/8/23 12:20 PM; adding console.log to log most of everything that happens in console to debug,
+// 28/8/23 12:20 PM; adding console.log to log most of everything that happens in console to debug, reset button needs to be resized
 
 // initial variables
 let playerScore = 0;
 let computerScore = 0;
 let rngOutput = 0;
+let playerTip = 0;
 let turnCount = 0;
+let gridLogger = 0;
 let gridArray = [0,1,2,3,4,5,6,7,8]; // array for line check
+let allowRandomNumber = true; // Initially, allow the function to generate random numbers (chat gpt made this)
 
 // function that runs when a button is clicked (mostly replaced by gameLoop1)
 function gameLoop (playerClicked) {
@@ -68,7 +69,9 @@ function gameLoop1 (playerSquareClick) {
 	gameLoop(playerSquareClick);
 	document.getElementById(playerSquareClick).disabled = true;
 	equalityCheck (playerSquareClick);
-	console.log("gameLoop1 player clicked ("+ playerSquareClick +")")
+	console.log("gameLoop1 player clicked ("+ playerSquareClick +")");
+	allowRandomNumber = true; // Enable random number generation when a square is clicked (chat gpt suggestion)
+
 }
 
 function rngPlayerTurn () {
@@ -201,17 +204,20 @@ function rngPlayerTurn () {
 			console.log("rngPlayerTurn html button label change");
 		}
 	}
-	const computerChoice = randomNumber //for debug only
+	const computerChoice = randomNumber; //for debug only
 	equalityCheck (computerChoice);
 }
 
 // generates random number, the heart of the low minded computer player.
 function generateRandomNumber () {
-	const result = (Math.floor(Math.random() * 8) +1); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
-	return result; // tested with alert(result); and gen rand num works when a button is clicked
-	
+	if (allowRandomNumber) {
+		const result = (Math.floor(Math.random() * 8) +1); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
+		return result; // tested with alert(result); and gen rand num works when a button is clicked
+	}
+	return -1; // Return a value indicating that the function was not allowed to generate a number
 }
 
+// my version of game reset
 function gameReset () {
 	document.getElementById("b1").innerHTML = "";
 	document.getElementById("b2").innerHTML = "";
@@ -235,6 +241,7 @@ function gameReset () {
 	rngOutput = 0;
 	gridArray = [0,1,2,3,4,5,6,7,8];
 	console.log("gameReset executed, gameboard is cleared")
+	allowRandomNumber = false; // chatGPT suggestion
 	//window.location.reload(true); //resets page
 }
 
@@ -254,110 +261,126 @@ function lineCheck () {
 
 	//straight line
 	if (gridArray[0]=='X' && gridArray[1]=='X' && gridArray[2]=='X') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		playerScore = playerScore +1;
 		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[1]=='O' && gridArray[2]=='O') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!"; // does not change playerTip as of right now
+		playerTip = "Computer Won!";
 		wait(1000);
 		gameReset();
 	}
 	if (gridArray[3]=='X' && gridArray[4]=='X' && gridArray[5]=='X') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		playerScore = playerScore +1;
 		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[3]=='O' && gridArray[4]=='O' && gridArray[5]=='O') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!"; // does not change playerTip as of right now
+		playerTip = "Computer Won!";
 		wait(1000);
 		gameReset();
 	}
-	if (gridArray[6]=='X' && gridArray[6]=='X' && gridArray[8]=='X') {
-		console.log("lineCheck detected a lineup")
+	if (gridArray[6]=='X' && gridArray[7]=='X' && gridArray[8]=='X') {
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		playerScore = playerScore +1;
 		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
-	} else if (gridArray[6]=='O' && gridArray[6]=='O' && gridArray[8]=='O') {
-		console.log("lineCheck detected a lineup")
+	} else if (gridArray[6]=='O' && gridArray[7]=='O' && gridArray[8]=='O') {
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!"; // does not change playerTip as of right now
+		playerTip = "Computer Won!";
 		wait(1000);
 		gameReset();
 	}
 
 	//diagonal
 	if (gridArray[0]=='X' && gridArray[4]=='X' && gridArray[8]=='X') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		playerScore = playerScore +1;
 		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[4]=='O' && gridArray[8]=='O') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!"; // does not change playerTip as of right now
+		playerTip = "Computer Won!";
 		wait(1000);
 		gameReset();
 	}
-	if (gridArray[2]=='X' && gridArray[4]=='X' && gridArray[6]=='X') {
-		console.log("lineCheck detected a lineup")
+	if (gridArray[2]=='X' && gridArray[5]=='X' && gridArray[6]=='X') {
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		playerScore = playerScore +1;
 		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
-	} else if (gridArray[2]=='O' && gridArray[4]=='O' && gridArray[6]=='O') {
-		console.log("lineCheck detected a lineup")
+	} else if (gridArray[2]=='O' && gridArray[5]=='O' && gridArray[6]=='O') {
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!"; // does not change playerTip as of right now
+		playerTip = "Computer Won!";
 		wait(1000);
 		gameReset();
 	}
 
 	//downwards and upwards
 	if (gridArray[0]=='X' && gridArray[3]=='X' && gridArray[6]=='X') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		playerScore = playerScore +1;
 		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[3]=='O' && gridArray[6]=='O') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!"; // does not change playerTip as of right now
+		playerTip = "Computer Won!";
 		wait(1000);
 		gameReset();
 	}
 	if (gridArray[1]=='X' && gridArray[4]=='X' && gridArray[7]=='X') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		playerScore = playerScore +1;
 		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[1]=='O' && gridArray[4]=='O' && gridArray[7]=='O') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!"; // does not change playerTip as of right now
+		playerTip = "Computer Won!";
 		wait(1000);
 		gameReset();
 	}
 	if (gridArray[2]=='X' && gridArray[5]=='X' && gridArray[8]=='X') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		playerScore = playerScore +1;
 		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[2]=='O' && gridArray[5]=='O' && gridArray[8]=='O') {
-		console.log("lineCheck detected a lineup")
+		console.log("lineCheck detected a lineup");
+		allowRandomNumber = false; // chatGPT allow random number function
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!"; // does not change playerTip as of right now
+		playerTip = "Computer Won!";
 		wait(1000);
 		gameReset();
 	}
@@ -375,14 +398,11 @@ function equalityCheck (playerChoice, computerChoice) {
 
 	if (turnCount == 9) {
 		playerTip = "Tie! Go Again.";
+		allowRandomNumber = false;
 		wait(1000);
 		gameReset();
 	}
-
-	// alert (playerChoice);  //for debug only
-	// alert (computerChoice); //for debug only
 	
-
 	document.getElementById("playerScoreContent").innerHTML = playerScore;
 	document.getElementById("computerScoreContent").innerHTML = computerScore;
 	document.getElementById("tipContent").innerHTML = playerTip;
