@@ -27,16 +27,16 @@
 // 11/8/23, 10:50 AM; current issues, RNG generates the same number twice, when game is reset rng doesnt start until player (X) clicks a square twice
 // 14/8/23, 5:30 PM; rng generating numbers twice still not solved, tictactoe data now is in javascript rather than checking the HTML file, previous issues still not solved.
 // 24/8/23 12:25 PM; rng problems listed above solved, the 3rd square that is clicked by rng or player does not get changed to X or O (needs fixing asap)
+// 28/8/23 12:20 PM; adding console.log to log most of everything that happens in console to debug,
 
 // initial variables
 let playerScore = 0;
 let computerScore = 0;
 let rngOutput = 0;
 let turnCount = 0;
-
 let gridArray = [0,1,2,3,4,5,6,7,8]; // array for line check
 
-// chunk of code that runs when a button is clicked
+// function that runs when a button is clicked (mostly replaced by gameLoop1)
 function gameLoop (playerClicked) {
 
 	// utilise the randomnumber output to allow the computer to choose a square
@@ -44,31 +44,19 @@ function gameLoop (playerClicked) {
 	// assign outputs to squares for rng player
 
 	playerTip = "You chose " + playerClicked;
-	
 	gridLogger = gridArray; // log the tictactoe board array updates in the console
-
-	let b1 = document.getElementById("b1"); // test if java script reacts to HTML button being clicked
-	let b2 = document.getElementById("b2");
-	let b3 = document.getElementById("b3");
-	let b4 = document.getElementById("b4");
-	let b5 = document.getElementById("b5");
-	let b6 = document.getElementById("b6");
-	let b7 = document.getElementById("b7");
-	let b8 = document.getElementById("b8");
-	let b9 = document.getElementById("b9");
-
+	
 	// adds a point to turn counter when a player or computer takes a turn 
 	if (playerClicked) {
 		turnCount = turnCount +1;
 	}
-
 	playerClicked = rngPlayerTurn(); // without this the rng will do nothing, essentially makes the rng take a turn when the player clicks a square
 	
 	// Clears board (working properly now)
 	document.getElementById("resetButton").addEventListener("click", function() {
 		gameReset();
 	});
-	
+	console.log("generateRandomNumber executed and gave output (" + generateRandomNumber() +")");
 	equalityCheck (playerClicked);
 }
 
@@ -80,6 +68,7 @@ function gameLoop1 (playerSquareClick) {
 	gameLoop(playerSquareClick);
 	document.getElementById(playerSquareClick).disabled = true;
 	equalityCheck (playerSquareClick);
+	console.log("gameLoop1 player clicked ("+ playerSquareClick +")")
 }
 
 function rngPlayerTurn () {
@@ -90,108 +79,126 @@ function rngPlayerTurn () {
 	if (randomNumber == 1) { 
 		if (gridArray[0] == 'X' || gridArray[0] == 'O') {
 			rngPlayerTurn();
+			console.log("rngPlayerTurn, JS found the same square was already executed.");
 		} else {
 			document.getElementById("b1").innerHTML = "O";
 			rngOutput = "rng output: " + 1;
 			gridArray[0]='O';
 			lineCheck();
 			document.getElementById("b1").disabled = true;
+			console.log("rngPlayerTurn html button label change");
 		}
 	}
 
 	if (randomNumber == 2) { 
 		if (gridArray[1] == 'X' || gridArray[1] == 'O') {
 			rngPlayerTurn();
+			console.log("rngPlayerTurn, JS found the same square was already executed.");
 		} else {
 			document.getElementById("b2").innerHTML = "O";
 			rngOutput = "rng output: " + 1;
 			gridArray[1]='O';
 			lineCheck();
 			document.getElementById("b2").disabled = true;
+			console.log("rngPlayerTurn html button label change");
 		}
 	}
 	
 	if (randomNumber == 3) { 
 		if (gridArray[2] == 'X' || gridArray[2] == 'O') {
 			rngPlayerTurn();
+			console.log("rngPlayerTurn, JS found the same square was already executed.");
 		} else {
 			document.getElementById("b3").innerHTML = "O";
 			rngOutput = "rng output: " + 1;
 			gridArray[2]='O';
 			lineCheck();
 			document.getElementById("b3").disabled = true;
+			console.log("rngPlayerTurn html button label change");
 		}
 	}
 
 	if (randomNumber == 4) {
 		if (gridArray[3] == 'X' || gridArray[3] == 'O') {
 			rngPlayerTurn();
+			console.log("rngPlayerTurn, JS found the same square was already executed.");
 		} else {
 			document.getElementById("b4").innerHTML = "O";
 			rngOutput = "rng output: " + 1;
 			gridArray[3]='O';
 			lineCheck();
 			document.getElementById("b4").disabled = true;
+			console.log("rngPlayerTurn html button label change");
 		}
 	}
 
 	if (randomNumber == 5) {
 		if (gridArray[4] == 'X' || gridArray[4] == 'O') {
 			rngPlayerTurn();
+			console.log("rngPlayerTurn, JS found the same square was already executed.");
 		} else {
 			document.getElementById("b5").innerHTML = "O";
 			rngOutput = "rng output: " + 1;
 			gridArray[4]='O';
 			lineCheck();
 			document.getElementById("b5").disabled = true;
+			console.log("rngPlayerTurn html button label change");
 		}
 	}
 
 	if (randomNumber == 6) {
 		if (gridArray[5] == 'X' || gridArray[5] == 'O') {
 			rngPlayerTurn();
+			console.log("rngPlayerTurn, JS found the same square was already executed.");
 		} else {
 			document.getElementById("b6").innerHTML = "O";
 			rngOutput = "rng output: " + 1;
 			gridArray[5]='O';
 			lineCheck();
 			document.getElementById("b6").disabled = true;
+			console.log("rngPlayerTurn html button label change");
 		}
 	}
 
 	if (randomNumber == 7) {
 		if (gridArray[6] == 'X' || gridArray[6] == 'O') {
 			rngPlayerTurn();
+			console.log("rngPlayerTurn, JS found the same square was already executed.");
 		} else {
 			document.getElementById("b7").innerHTML = "O";
 			rngOutput = "rng output: " + 1;
 			gridArray[6]='O';
 			lineCheck();
 			document.getElementById("b7").disabled = true;
+			console.log("rngPlayerTurn html button label change");
 		}
 	}
 
 	if (randomNumber == 8) {
 		if (gridArray[7] == 'X' || gridArray[7] == 'O') {
 			rngPlayerTurn();
+			console.log("rngPlayerTurn, JS found the same square was already executed.");
 		} else {
 			document.getElementById("b8").innerHTML = "O";
 			rngOutput = "rng output: " + 1;
 			gridArray[7]='O';
 			lineCheck();
 			document.getElementById("b8").disabled = true;
+			console.log("rngPlayerTurn html button label change");
 		}
 	}
 
 	if (randomNumber == 9) {
 		if (gridArray[8] == 'X' || gridArray[8] == 'O') {
 			rngPlayerTurn();
+			console.log("rngPlayerTurn, JS found the same square was already executed.");
 		} else {
 			document.getElementById("b9").innerHTML = "O";
 			rngOutput = "rng output: " + 1;
 			gridArray[8]='O';
 			lineCheck();
 			document.getElementById("b9").disabled = true;
+			console.log("rngPlayerTurn html button label change");
 		}
 	}
 	const computerChoice = randomNumber //for debug only
@@ -202,18 +209,19 @@ function rngPlayerTurn () {
 function generateRandomNumber () {
 	const result = (Math.floor(Math.random() * 8) +1); // rng works fine for the moment but code needs to be put in place to prevent any code from using duplicated outputs
 	return result; // tested with alert(result); and gen rand num works when a button is clicked
+	
 }
 
 function gameReset () {
-	b1 = document.getElementById("b1").innerHTML = "";
-	b2 = document.getElementById("b2").innerHTML = "";
-	b3 = document.getElementById("b3").innerHTML = "";
-	b4 = document.getElementById("b4").innerHTML = "";
-	b5 = document.getElementById("b5").innerHTML = "";
-	b6 = document.getElementById("b6").innerHTML = "";
-	b7 = document.getElementById("b7").innerHTML = "";
-	b8 = document.getElementById("b8").innerHTML = "";
-	b9 = document.getElementById("b9").innerHTML = "";
+	document.getElementById("b1").innerHTML = "";
+	document.getElementById("b2").innerHTML = "";
+	document.getElementById("b3").innerHTML = "";
+	document.getElementById("b4").innerHTML = "";
+	document.getElementById("b5").innerHTML = "";
+	document.getElementById("b6").innerHTML = "";
+	document.getElementById("b7").innerHTML = "";
+	document.getElementById("b8").innerHTML = "";
+	document.getElementById("b9").innerHTML = "";
 	document.getElementById("b1").disabled = false;
 	document.getElementById("b2").disabled = false;
 	document.getElementById("b3").disabled = false;
@@ -226,6 +234,7 @@ function gameReset () {
 	turnCount = 0;
 	rngOutput = 0;
 	gridArray = [0,1,2,3,4,5,6,7,8];
+	console.log("gameReset executed, gameboard is cleared")
 	//window.location.reload(true); //resets page
 }
 
@@ -245,94 +254,110 @@ function lineCheck () {
 
 	//straight line
 	if (gridArray[0]=='X' && gridArray[1]=='X' && gridArray[2]=='X') {
+		console.log("lineCheck detected a lineup")
 		playerScore = playerScore +1;
-		playerTip = "Player won!";
+		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[1]=='O' && gridArray[2]=='O') {
+		console.log("lineCheck detected a lineup")
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!";
+		playerTip = "Computer Won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	}
 	if (gridArray[3]=='X' && gridArray[4]=='X' && gridArray[5]=='X') {
+		console.log("lineCheck detected a lineup")
 		playerScore = playerScore +1;
-		playerTip = "Player won!";
+		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[3]=='O' && gridArray[4]=='O' && gridArray[5]=='O') {
+		console.log("lineCheck detected a lineup")
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!";
+		playerTip = "Computer Won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	}
 	if (gridArray[6]=='X' && gridArray[6]=='X' && gridArray[8]=='X') {
+		console.log("lineCheck detected a lineup")
 		playerScore = playerScore +1;
-		playerTip = "Player won!";
+		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[6]=='O' && gridArray[6]=='O' && gridArray[8]=='O') {
+		console.log("lineCheck detected a lineup")
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!";
+		playerTip = "Computer Won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	}
 
 	//diagonal
 	if (gridArray[0]=='X' && gridArray[4]=='X' && gridArray[8]=='X') {
+		console.log("lineCheck detected a lineup")
 		playerScore = playerScore +1;
-		playerTip = "Player won!";
+		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[4]=='O' && gridArray[8]=='O') {
+		console.log("lineCheck detected a lineup")
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!";
+		playerTip = "Computer Won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	}
 	if (gridArray[2]=='X' && gridArray[4]=='X' && gridArray[6]=='X') {
+		console.log("lineCheck detected a lineup")
 		playerScore = playerScore +1;
-		playerTip = "Player won!";
+		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[2]=='O' && gridArray[4]=='O' && gridArray[6]=='O') {
+		console.log("lineCheck detected a lineup")
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!";
+		playerTip = "Computer Won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	}
 
 	//downwards and upwards
 	if (gridArray[0]=='X' && gridArray[3]=='X' && gridArray[6]=='X') {
+		console.log("lineCheck detected a lineup")
 		playerScore = playerScore +1;
-		playerTip = "Player won!";
+		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[0]=='O' && gridArray[3]=='O' && gridArray[6]=='O') {
+		console.log("lineCheck detected a lineup")
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!";
+		playerTip = "Computer Won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	}
 	if (gridArray[1]=='X' && gridArray[4]=='X' && gridArray[7]=='X') {
+		console.log("lineCheck detected a lineup")
 		playerScore = playerScore +1;
-		playerTip = "Player won!";
+		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[1]=='O' && gridArray[4]=='O' && gridArray[7]=='O') {
+		console.log("lineCheck detected a lineup")
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!";
+		playerTip = "Computer Won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	}
 	if (gridArray[2]=='X' && gridArray[5]=='X' && gridArray[8]=='X') {
+		console.log("lineCheck detected a lineup")
 		playerScore = playerScore +1;
-		playerTip = "Player won!";
+		playerTip = "Player won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	} else if (gridArray[2]=='O' && gridArray[5]=='O' && gridArray[8]=='O') {
+		console.log("lineCheck detected a lineup")
 		computerScore = computerScore +1;
-		playerTip = "Computer Won!";
+		playerTip = "Computer Won!"; // does not change playerTip as of right now
 		wait(1000);
 		gameReset();
 	}
