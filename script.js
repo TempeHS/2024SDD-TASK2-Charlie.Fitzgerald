@@ -217,7 +217,7 @@ function generateRandomNumber () {
 	return -1; // Return a value indicating that the function was not allowed to generate a number
 }
 
-// my version of game reset
+// game reset
 function gameReset () {
 	document.getElementById("b1").innerHTML = "";
 	document.getElementById("b2").innerHTML = "";
@@ -391,8 +391,6 @@ function equalityCheck (playerChoice, computerChoice) {
 
 	// create if statements that detect 3 crosses or circles in a row and decide the winner
 	// create logic that plots the circles by the computer (player will be crosses and computer will be circles)
-	
-	//let playerTip = 0; // only for testing at the moment
 
 	// resets board when turnCount = 9 to reset board automatically on a tie
 
@@ -402,6 +400,7 @@ function equalityCheck (playerChoice, computerChoice) {
 		wait(1000);
 		gameReset();
 	}
+
 	
 	document.getElementById("playerScoreContent").innerHTML = playerScore;
 	document.getElementById("computerScoreContent").innerHTML = computerScore;

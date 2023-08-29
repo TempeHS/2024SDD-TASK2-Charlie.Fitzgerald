@@ -25,7 +25,7 @@
 	conic-gradient(at calc(100% - var(--g)) calc(100% - var(--g)),#000 75%,#0000 0)
 	0 0/calc((100% + var(--g))/3) calc((100% + var(--g))/3)
 	}
-
+	
 	.grid {
 	text-align: center;
 	padding: 20px;
@@ -61,10 +61,9 @@
 	<div class="tictactoe-buttons">
 		<button id="resetButton">reset</button>
 	</div>
-	</div>
 	<h1>board values:</h1>
 	<h1 id="gridLogger">0</h1>
-	<div class="grid-holder">
+	<div id="gridAndButtons" class="grid-holder">
 		<button value="0" id="b1" onclick="gameLoop1('b1');"></button>
 		<button value="1" id="b2" onclick="gameLoop1('b2');"></button>
 		<button value="2" id="b3" onclick="gameLoop1('b3');"></button>
