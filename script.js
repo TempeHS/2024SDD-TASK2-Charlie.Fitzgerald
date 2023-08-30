@@ -27,6 +27,7 @@
 // 24/8/23 12:25 PM; rng problems listed above solved, the 3rd square that is clicked by rng or player does not get changed to X or O (needs fixing asap)
 // 28/8/23 12:20 PM; adding console.log to log most of everything that happens in console to debug, reset button needs to be resized
 // 30/8/23 12:28 PM; final day of working on this project, squares left disabled after game reset fixed, playerTip not updating to player won stll needs to be fixed.
+// 30/8/23 10:45 PM; i think this is the final time i work on this project, i fixed all the issues.
 
 // initial variables
 let playerScore = 0;
